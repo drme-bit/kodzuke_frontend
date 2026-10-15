@@ -61,7 +61,6 @@ export function NavSearch({ onNavigate, className = "" }: { onNavigate?: () => v
       <HiMagnifyingGlass />
       <input type="search" value={query} aria-label={tui("searchTitles")} aria-controls={id} placeholder={tui("searchTitles")} autoComplete="off" onFocus={() => setOpen(true)} onChange={event => { setDraft({ urlQuery, value: event.target.value }); setOpen(true); }} />
       {query && <button type="button" aria-label={tui("clearSearch")} onClick={() => { setDraft({ urlQuery, value: "" }); setOpen(false); root.current?.querySelector("input")?.focus(); }}><HiXMark /></button>}
-      <button type="submit">{tui("search")}</button>
     </div>
     {open && trimmed.length >= 2 && <section id={id} className={styles.results} onPointerDown={event => { if (event.button === 0 && (event.target as Element).closest("a")) event.preventDefault(); }} aria-label={tui("searchTitles")}>
       {!matching ? <p role="status">{tui("searchLoading")}</p> : matching.error ? <p role="status">{tui("searchFailed")}</p> : <>
