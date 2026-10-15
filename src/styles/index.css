@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import "../app/globals.css";
+@import "../styles/base.css";
+@import "../features/anime/styles/detail.css";
+@import "../features/browse/styles/browse.css";
+@import "../features/catalog/styles/catalog.css";
+@import "../features/home/styles/home.css";
+@import "../features/navigation/styles/navigation.css";
+@import "../features/anime/styles/player.css";
+@import "../features/anime/styles/community.css";

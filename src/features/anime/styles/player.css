@@ -1,0 +1,483 @@
+/* player styles: owned by this feature. */
+
+.watch-cta { display: inline-flex; gap: 10px; align-items: center; padding: 13px 24px; background: var(--anime-accent); color: #000000; font-size: 14px; font-weight: 700; border-radius: 999px; }
+.watch-cta:hover { background: #e5e5e5; }
+
+.stream-shell { border: 1px solid #ffffff13; border-radius: 14px; overflow: hidden; background: var(--anime-surface); }
+.stream-screen { position: relative; background: black; overflow: hidden; }
+.stream-screen > div { height: 100%; width: 100%; position: absolute; inset: 0; }
+.stream-placeholder { display: grid; place-items: center; text-align: center; }
+.stream-backdrop { position: absolute; inset: 0; background-size: cover; background-position: center; filter: blur(12px); opacity: .12; }
+.stream-message { position: relative; padding: 24px; }
+.stream-message p { font-weight: 600; margin-top: 14px; }
+.stream-message > span:last-child { display: block; color: #a3a3a3; font-size: 13px; margin-top: 6px; }
+.stream-empty-icon { font-size: 42px; color: var(--anime-accent); }
+.stream-spinner { width: 32px; height: 32px; border: 2px solid #ffffff20; border-top-color: var(--anime-accent); border-radius: 50%; animation: stream-spin 1s linear infinite; margin: auto; }
+@keyframes stream-spin { to { transform: rotate(360deg); } }
+
+.episode-navigation { display: flex; align-items: center; gap: 14px; color: #aaaaaa; font-size: 12px; }
+.episode-navigation button { padding: 7px; background: #ffffff06; border-radius: 6px; }
+.episode-navigation button:disabled { opacity: .25; }
+@media (prefers-reduced-motion: reduce) { .stream-spinner { animation: none; } }
+.watch-controls { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+.watch-field { display: flex; flex-direction: column; gap: 7px; flex: 1 1 150px; min-width: 0; }
+.watch-field > span { color: #8d8d8d; font-size: 12px; }
+.watch-field select { width: 100%; min-width: 0; height: 40px; padding: 0 28px 0 12px; background: #141414; color: #eee; border: 1px solid #ffffff18; border-radius: 6px; font-size: 13px; color-scheme: dark; }
+.watch-field select:disabled { color: #777; }
+.watch-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 40px; }
+.episode-navigation { gap: 6px; }
+.episode-navigation button { width: 32px; height: 36px; display: grid; place-items: center; border-radius: 5px; }
+.stream-shell { background: transparent; border: 0; border-radius: 0; overflow: visible; }
+.stream-screen { border-radius: 8px; }
+.watch-cta { border-radius: 6px; }
+.watch-cta:hover { background: #e5e5e5; }
+@media (max-width: 640px) { .watch-field { flex-basis: calc(50% - 12px); } }
+@media (max-width: 640px) { .watch-actions { flex: 1 1 100%; } }
+.theater-container { position: sticky; top: 86px; z-index: 30; padding: 12px 32px 18px; background: #060606; }
+.theater-stage { min-width: 0; }
+.theater .watch-controls { margin-bottom: 12px; gap: 12px; }
+.theater .watch-field { flex: 0 1 220px; }
+.theater .watch-actions { margin-left: auto; }
+.theater .stream-screen { max-height: calc(100dvh - 260px); aspect-ratio: 16 / 9; }
+.theater-episodes { display: flex; flex-direction: column; min-height: 0; height: 0; min-height: 100%; max-height: none; }
+.theater-episodes-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 3px 8px 16px; }
+.theater-episodes-heading h3 { font-size: 17px; font-weight: 600; }
+.theater-episodes-heading > span { color: #888; font-size: 12px; }
+.episode-list { min-height: 0; overflow-y: auto; flex: 1; padding: 0 6px 4px; overscroll-behavior-y: contain; }
+.episode-row { display: grid; grid-template-columns: 145px minmax(0, 1fr); gap: 12px; width: 100%; text-align: left; padding: 10px 6px; border-radius: 6px; margin-bottom: 4px; border: 1px solid transparent; }
+.episode-row:hover:not(:disabled) { background: #ffffff06; }
+.episode-row.selected { background: #ffffff09; border-color: #ffffff1e; }
+.episode-row:disabled { cursor: not-allowed; color: #888; }
+.episode-thumbnail { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 4px; background: #171717; }
+.episode-thumbnail img { height: 100%; width: 100%; object-fit: cover; }
+.episode-row:disabled .episode-thumbnail img { opacity: .5; }
+.episode-playing, .episode-lock { position: absolute; inset: 0; display: grid; place-items: center; background: #0005; }
+.episode-playing svg { width: 22px; height: 22px; }
+.episode-lock svg { width: 16px; height: 16px; color: #ddd; }
+.episode-caption { display: flex; flex-direction: column; justify-content: center; min-width: 0; gap: 5px; }
+.episode-number { color: #999; font-size: 11px; }
+.episode-name { font-size: 13px; font-weight: 550; line-height: 1.4; overflow-wrap: anywhere; }
+.episode-state { font-size: 11px; color: #777; }
+.episode-row.selected .episode-state { color: #ddd; }
+.episode-list-empty { color: #999; font-size: 13px; padding: 20px 0; }
+@media (min-width: 1600px) { .episode-row { grid-template-columns: 170px minmax(0, 1fr); } }
+@media (max-width: 1023px) { .theater-container { position: static; padding: 12px 20px 24px; } }
+@media (max-width: 1023px) { .theater-stage { position: sticky; top: 80px; z-index: 25; background: #060606; padding-bottom: 12px; } }
+@media (max-width: 1023px) { .theater-episodes { height: auto; min-height: 0; max-height: none; } }
+@media (max-width: 1023px) { .episode-list { max-height: 440px; flex: initial; } }
+@media (max-width: 640px) { .theater-container { padding: 8px 12px 20px; } }
+@media (max-width: 640px) { .theater-stage { top: 72px; } }
+@media (max-width: 640px) { .theater .watch-field { flex: 1 1 calc(50% - 12px); } }
+@media (max-width: 640px) { .theater .watch-actions { flex: 1 1 100%; height: 28px; } }
+@media (max-width: 640px) { .theater .watch-field select { height: 34px; font-size: 12px; } }
+@media (max-width: 640px) { .theater .watch-controls { gap: 8px; } }
+@media (max-width: 640px) { .theater .stream-screen { max-height: 35dvh; } }
+@media (max-width: 640px) { .episode-row { grid-template-columns: 145px minmax(0, 1fr); } }
+
+@media (min-width: 1024px) {
+  .theater-stage { grid-column: 1; }
+}
+
+@media (min-width: 1024px) {
+  .theater-episodes { position: absolute; right: 0; top: 0; bottom: 0; width: 340px; height: auto; min-height: 0; }
+}
+@media (min-width: 1600px) { .theater-episodes { width: 390px; } }
+
+.episode-thumbnail img.episode-poster-fallback { object-fit: contain; background: #151515; }
+body:has(.immersive-watch) { background: #060606; }
+.anime-page:has(.immersive-watch) { background: transparent; position: relative; isolation: isolate; padding-bottom: 0; }
+.theater-container:has(.immersive-watch) { position: static; padding: 0; background: transparent; }
+.immersive-watch { position: relative; height: calc(100dvh - 80px); min-height: 480px; }
+.immersive-video { position: fixed; inset: 0; z-index: -1; background: black; }
+.immersive-video .stream-shell, .immersive-video .stream-screen { width: 100%; height: 100%; max-height: none; aspect-ratio: auto; border-radius: 0; }
+.immersive-video video { object-fit: contain; }
+.immersive-panels { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 1; transition: opacity .45s ease, transform .45s ease; background: linear-gradient(90deg, #0008, transparent 60%, #0005), linear-gradient(0deg, #0008, transparent 35%); }
+.immersive-watch[data-controls="hidden"] .immersive-panels { opacity: 0; transform: translateY(6px); }
+.immersive-panels .theater-stage { position: absolute; left: 36px; bottom: 65px; right: 405px; background: transparent; padding: 0; }
+.immersive-panels .section-heading h2 { font-size: clamp(22px, 2.6vw, 38px); text-shadow: 0 2px 20px #000; }
+.immersive-panels .section-heading p { color: #ccc; }
+.immersive-panels .watch-controls { pointer-events: auto; padding: 14px; border-radius: 8px; background: #1117; backdrop-filter: blur(18px); margin-top: 20px; }
+.immersive-panels .watch-field select { background: #151515a8; }
+.immersive-panels .theater-episodes { pointer-events: auto; position: absolute; right: 24px; top: 20px; bottom: 65px; width: 350px; height: auto; min-height: 0; padding: 16px 10px; border-radius: 10px; background: #10101080; backdrop-filter: blur(22px); }
+.immersive-watch[data-controls="hidden"] .watch-controls, .immersive-watch[data-controls="hidden"] .theater-episodes, .immersive-watch[data-controls="hidden"] .immersive-details-link { pointer-events: none; visibility: hidden; }
+.immersive-wake { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.immersive-watch[data-controls="hidden"] .immersive-wake { pointer-events: auto; }
+.immersive-toggle { position: absolute; z-index: 3; top: 12px; left: 36px; padding: 9px 12px; font-size: 12px; border-radius: 5px; background: #0005; color: #ddd; backdrop-filter: blur(10px); }
+.immersive-details-link { position: absolute; bottom: 20px; left: 36px; pointer-events: auto; font-size: 13px; color: #ccc; }
+.immersive-information { position: relative; z-index: 4; padding: 72px 0 80px; background: linear-gradient(0deg, #060606f5, #060606d9 85%, #06060688); backdrop-filter: blur(24px); }
+.immersive-information::before { content: ""; position: absolute; left: 0; right: 0; top: -64px; height: 64px; background: linear-gradient(0deg, #06060688, transparent); pointer-events: none; }
+.immersive-information .anime-hero { background: transparent; margin-top: 0; padding-top: 0; }
+.immersive-information .anime-hero > .pointer-events-none { display: none; }
+body:has(.immersive-watch[data-controls="hidden"]) .site-header { opacity: 0; pointer-events: none; }
+.immersive-panels:has(:focus-visible) { opacity: 1; transform: none; }
+.immersive-panels:has(:focus-visible) .watch-controls, .immersive-panels:has(:focus-visible) .theater-episodes, .immersive-panels:has(:focus-visible) .immersive-details-link { visibility: visible; pointer-events: auto; }
+@media (max-width: 1023px) { .immersive-panels .theater-stage { left: 20px; right: 350px; bottom: 60px; } }
+@media (max-width: 1023px) { .immersive-panels .theater-episodes { right: 16px; width: 310px; } }
+@media (max-width: 1023px) { .immersive-panels .watch-field { flex: 1 1 100%; } }
+@media (max-width: 640px) { .immersive-watch { height: calc(100dvh - 80px); min-height: 560px; } }
+@media (max-width: 640px) { .immersive-panels .theater-stage { left: 12px; right: 12px; top: 24px; bottom: auto; } }
+@media (max-width: 640px) { .immersive-panels .section-heading { display: block; } }
+@media (max-width: 640px) { .immersive-panels .section-heading h2 { font-size: 22px; } }
+@media (max-width: 640px) { .immersive-panels .watch-field { flex: 1 1 calc(50% - 12px); } }
+@media (max-width: 640px) { .immersive-panels .watch-controls { margin-top: 10px; padding: 10px; } }
+@media (max-width: 640px) { .immersive-panels .theater-episodes { left: 12px; right: 12px; top: auto; bottom: 48px; width: auto; height: 32dvh; padding: 10px 6px; } }
+@media (max-width: 640px) { .immersive-panels .episode-list { max-height: none; flex: 1; } }
+@media (max-width: 640px) { .immersive-toggle { left: auto; right: 16px; top: 0; } }
+@media (max-width: 640px) { .immersive-details-link { left: 16px; bottom: 16px; } }
+@media (max-width: 640px) { .immersive-information { padding-top: 30px; } }
+@media (prefers-reduced-motion: reduce) { .immersive-panels, .site-header { transition: none; } }
+
+body:has(.immersive-watch) .site-header:focus-within { opacity: 1; pointer-events: auto; }
+
+.anime-page:has(.immersive-watch) { pointer-events: none; }
+.immersive-video, .immersive-information, .immersive-toggle { pointer-events: auto; }
+.immersive-panels { visibility: visible; transition: opacity .45s ease, transform .45s ease, visibility 0s; }
+.immersive-watch[data-controls="hidden"] .immersive-panels { visibility: hidden; transition: opacity .45s ease, transform .45s ease, visibility 0s .45s; }
+.immersive-watch[data-controls="hidden"] .watch-controls, .immersive-watch[data-controls="hidden"] .theater-episodes, .immersive-watch[data-controls="hidden"] .immersive-details-link { visibility: inherit; }
+.immersive-panels:has(:focus-visible) { visibility: visible !important; transition-delay: 0s; }
+@media (prefers-reduced-motion: reduce) { .immersive-panels { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .immersive-watch[data-controls="hidden"] .immersive-panels { transition: none; } }
+.cinema-artwork { position: absolute; inset: -80px 0 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.cinema-artwork > div { position: absolute; inset: 0; background-size: cover; background-position: 65% 25%; filter: blur(5px); opacity: .6; transform: scale(1.025); }
+.cinema-artwork > span { position: absolute; inset: 0; background: linear-gradient(90deg, #060606eb 0%, #06060699 55%, #06060680), linear-gradient(0deg, #060606 0%, transparent 65%); }
+.immersive-panels .theater-stage { bottom: 85px; right: 430px; max-width: 760px; }
+.immersive-panels .section-heading h1 { font-size: clamp(32px, 4.5vw, 64px); font-weight: 750; line-height: 1.05; letter-spacing: -.045em; text-shadow: 0 4px 24px #0005; }
+.immersive-panels .section-heading p { margin-top: 12px; color: #aaa; }
+.cinema-overview { margin-top: 12px; }
+.cinema-original-title { font-size: 15px; color: #999; }
+.cinema-metadata { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: 18px; color: #bbb; font-size: 13px; }
+.cinema-metadata strong { color: #fff; font-weight: 650; }
+.cinema-synopsis { margin-top: 20px; max-width: 620px; font-size: 15px; line-height: 1.8; color: #ccc; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.cinema-primary-actions { display: flex; gap: 22px; align-items: center; margin-top: 26px; pointer-events: auto; }
+.cinema-play { display: inline-flex; gap: 10px; align-items: center; background: white; color: black; padding: 14px 24px; border-radius: 5px; font-weight: 650; font-size: 14px; }
+.cinema-play:hover { background: #ddd; }
+.cinema-play:disabled { opacity: .35; cursor: not-allowed; }
+.cinema-play svg { width: 18px; height: 18px; }
+.cinema-primary-actions a { display: flex; align-items: center; gap: 8px; color: #bbb; font-size: 13px; }
+.cinema-playback-note { margin-top: 14px; color: #aaa; font-size: 13px; }
+.immersive-panels .watch-controls { background: transparent; backdrop-filter: none; padding: 0; margin-top: 30px; gap: 12px; }
+.immersive-panels .watch-field { flex: 1 1 180px; }
+.immersive-panels .watch-actions { flex: 1 1 100%; justify-content: flex-start; gap: 24px; }
+.immersive-panels .theater-episodes { top: 40px; bottom: 85px; width: 365px; padding: 16px 10px; background: #0a0a0a66; border: 1px solid #ffffff0b; }
+.immersive-panels .theater-episodes-heading h3 { font-size: 21px; }
+.episode-row { padding: 12px 6px; }
+.episode-row.selected { background: #ffffff0b; border-color: #ffffff24; }
+.episode-name { font-size: 14px; }
+.immersive-details-link { display: flex; align-items: center; gap: 8px; }
+.immersive-watch[data-mode="watch"] .cinema-overview { display: none; }
+.immersive-watch[data-mode="watch"] .section-heading h1 { font-size: 26px; }
+.immersive-watch[data-mode="watch"] .theater-stage { max-width: 700px; }
+.immersive-information { padding-top: 50px; }
+.cinema-back { display: inline-flex; align-items: center; gap: 7px; color: #999; font-size: 12px; margin-bottom: 20px; }
+@media (max-width: 1023px) and (min-width: 641px) { .immersive-panels .theater-stage { left: 24px; right: 360px; } }
+@media (max-width: 1023px) and (min-width: 641px) { .immersive-panels .theater-episodes { width: 310px; } }
+@media (max-width: 1023px) and (min-width: 641px) { .immersive-panels .section-heading h1 { font-size: 38px; } }
+@media (max-width: 640px) { .immersive-watch { height: auto; min-height: calc(100dvh - 80px); } }
+@media (max-width: 640px) { .immersive-panels { position: relative; inset: auto; min-height: calc(100dvh - 80px); padding: 30px 16px 70px; } }
+@media (max-width: 640px) { .immersive-panels .theater-stage { position: relative; inset: auto; max-width: none; } }
+@media (max-width: 640px) { .immersive-panels .section-heading h1 { font-size: 32px; } }
+@media (max-width: 640px) { .cinema-synopsis { font-size: 13px; margin-top: 14px; -webkit-line-clamp: 2; } }
+@media (max-width: 640px) { .cinema-metadata { gap: 10px; font-size: 12px; margin-top: 12px; } }
+@media (max-width: 640px) { .cinema-primary-actions { gap: 14px; margin-top: 18px; } }
+@media (max-width: 640px) { .cinema-play { padding: 12px 16px; font-size: 13px; } }
+@media (max-width: 640px) { .immersive-panels .watch-controls { margin-top: 22px; padding: 0; } }
+@media (max-width: 640px) { .immersive-panels .watch-field { flex: 1 1 calc(50% - 12px); } }
+@media (max-width: 640px) { .immersive-panels .theater-episodes { position: relative; inset: auto; width: auto; height: 320px; margin-top: 26px; padding: 10px 6px; } }
+@media (max-width: 640px) { .immersive-watch[data-mode="watch"] .immersive-panels .theater-stage { padding-top: 24dvh; } }
+@media (max-width: 640px) { .immersive-watch[data-mode="watch"] .section-heading h1 { font-size: 22px; } }
+@media (max-width: 640px) { .immersive-details-link { bottom: 24px; } }
+
+.cinema-info-button { pointer-events: auto; font-size: 14px; color: #ddd; padding: 12px 18px; background: #ffffff12; border: 1px solid #ffffff18; border-radius: 5px; backdrop-filter: blur(12px); }
+.cinema-info-button:hover { background: #ffffff20; }
+.cinema-watch-details { position: absolute; bottom: 24px; left: 36px; display: none; pointer-events: auto; }
+.immersive-watch[data-mode="watch"] .cinema-watch-details { display: block; }
+.immersive-watch[data-mode="watch"] .immersive-details-link { display: none; }
+.cinema-info-dialog { position: fixed; inset: 0; margin: auto; width: min(760px, calc(100vw - 32px)); max-height: 85dvh; padding: 0; background: #141414eF; color: #eee; border: 1px solid #ffffff20; border-radius: 12px; pointer-events: auto; overflow-y: auto; backdrop-filter: blur(24px); box-shadow: 0 25px 100px #0008; }
+.cinema-info-dialog::backdrop { background: #0008; backdrop-filter: blur(12px); }
+.cinema-info-body { position: relative; padding: 40px; }
+.cinema-info-body h2 { max-width: 90%; font-size: 28px; font-weight: 650; line-height: 1.2; letter-spacing: -.025em; }
+.cinema-info-meta { color: #888; font-size: 13px; margin-top: 12px; }
+.cinema-info-close { position: absolute; right: 18px; top: 18px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 5px; background: #ffffff10; }
+.cinema-info-close svg { width: 20px; height: 20px; }
+.cinema-info-tabs { display: flex; gap: 22px; margin-top: 28px; border-bottom: 1px solid #ffffff12; }
+.cinema-info-tabs button { padding: 10px 0; font-size: 14px; color: #999; border-bottom: 2px solid transparent; }
+.cinema-info-tabs button[aria-pressed="true"] { border-color: white; color: white; }
+.cinema-info-description { margin-top: 24px; font-size: 15px; line-height: 1.85; color: #bbb; }
+.cinema-info-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
+.cinema-info-gallery img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 5px; }
+.cinema-trailer-link { display: inline-flex; margin-top: 24px; padding: 12px 18px; border-radius: 5px; background: #fff; color: #000; font-size: 14px; }
+@media (max-width: 640px) { .cinema-info-body { padding: 28px 20px; } }
+@media (max-width: 640px) { .cinema-info-body h2 { font-size: 23px; } }
+@media (max-width: 640px) { .cinema-info-gallery { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .cinema-watch-details { left: 16px; bottom: 18px; } }
+
+.immersive-panels:has(dialog[open]) { opacity: 1; visibility: visible !important; transform: none; }
+.cinema-info-dialog { visibility: visible; }
+
+.cinema-artwork { background: #060606; }
+.immersive-panels { background: transparent; }
+.immersive-watch { margin-top: -80px; height: 100dvh; }
+.immersive-panels .theater-stage { left: 36px; right: auto; bottom: 325px; max-width: 640px; }
+.immersive-panels .section-heading h1 { font-size: 32px; }
+.immersive-panels .section-heading p, .cinema-original-title { font-size: 12px; color: #999; }
+.cinema-synopsis { font-size: 13px; line-height: 1.7; -webkit-line-clamp: 2; max-width: 520px; }
+.cinema-metadata { font-size: 12px; margin-top: 12px; }
+.immersive-watch[data-mode="watch"] .theater-stage { bottom: 315px; }
+.immersive-watch[data-mode="watch"] .section-heading h1 { font-size: 16px; color: #aaa; font-weight: 500; letter-spacing: 0; }
+.immersive-watch[data-mode="watch"] .section-heading p { font-size: 12px; }
+.immersive-panels .player-top-controls { position: absolute; top: 92px; left: 36px; right: 36px; margin: 0; padding: 0; display: flex; gap: 20px; align-items: center; pointer-events: auto; }
+.immersive-panels .player-top-controls .watch-field { flex: 0 1 230px; gap: 6px; }
+.immersive-panels .player-top-controls .watch-field > span { color: #bcbcbc; }
+.immersive-panels .player-top-controls select { height: 40px; background: #0006; backdrop-filter: blur(12px); border: 0; border-bottom: 1px solid #ffffff35; border-radius: 3px; color: #eee; }
+.immersive-panels .player-top-controls .watch-actions { flex: 1; justify-content: flex-end; gap: 24px; }
+.episode-navigation { gap: 10px; }
+.episode-navigation button { width: auto; padding: 0 12px; height: 38px; display: flex; gap: 8px; font-size: 12px; background: #0005; border: 1px solid #ffffff20; }
+.episode-navigation button:disabled { opacity: .3; }
+.player-bottom-dock { position: absolute; bottom: 65px; left: 36px; right: 36px; pointer-events: auto; }
+.player-dock-heading { display: flex; gap: 20px; align-items: center; margin-bottom: 14px; }
+.player-series-toggle { display: flex; gap: 10px; align-items: center; font-size: 16px; font-weight: 600; }
+.player-series-toggle svg { transition: transform .2s; }
+.immersive-watch[data-rail="open"] .player-series-toggle svg { transform: rotate(180deg); }
+.player-dock-heading > span { color: #888; font-size: 12px; }
+.player-dock-heading .cinema-info-button { margin-left: auto; background: transparent; border: 0; padding: 6px; backdrop-filter: none; font-size: 12px; }
+.immersive-panels .theater-episodes { position: static; width: auto; height: auto; padding: 0; margin: 0; background: none; border: 0; backdrop-filter: none; border-radius: 0; }
+.theater-episodes-heading { display: none; }
+.episode-list { display: flex; gap: 16px; overflow-x: auto; overflow-y: hidden; max-height: none; padding: 4px 2px 10px; scrollbar-width: none; overscroll-behavior-x: contain; scroll-snap-type: x proximity; }
+.episode-list::-webkit-scrollbar { display: none; }
+.episode-row { flex: 0 0 190px; display: flex; flex-direction: column; padding: 0; margin: 0; background: transparent; border: 0; gap: 10px; scroll-snap-align: start; }
+.episode-row.selected, .episode-row:hover:not(:disabled) { background: transparent; border: 0; }
+.episode-thumbnail { width: 100%; background: transparent; border-radius: 3px; }
+.episode-row.selected .episode-thumbnail { outline: 2px solid #fff; outline-offset: -2px; }
+.episode-thumbnail img.episode-poster-fallback { background: transparent; }
+.episode-caption { gap: 4px; padding: 0 2px; }
+.episode-name { font-size: 13px; }
+.episode-number, .episode-state { font-size: 11px; }
+.immersive-watch[data-rail="closed"] .theater-episodes { display: none; }
+.immersive-watch[data-rail="closed"] .theater-stage { bottom: 145px; }
+.immersive-watch[data-rail="closed"][data-mode="watch"] .theater-stage { bottom: 130px; }
+.immersive-watch[data-controls="hidden"] .player-top-controls, .immersive-watch[data-controls="hidden"] .player-bottom-dock { visibility: hidden; pointer-events: none; }
+.cinema-watch-details, .immersive-details-link { display: none !important; }
+.immersive-information { background: linear-gradient(0deg, #060606e8, #06060688 70%, transparent); backdrop-filter: none; padding-top: 70px; }
+.immersive-information::before { top: -120px; height: 160px; background: linear-gradient(0deg, #06060670, transparent); }
+@media (max-width: 900px) { .immersive-panels .player-top-controls { flex-wrap: wrap; left: 20px; right: 20px; gap: 12px; } }
+@media (max-width: 900px) { .immersive-panels .player-top-controls .watch-actions { flex: 1 1 100%; justify-content: space-between; } }
+@media (max-width: 900px) { .player-bottom-dock { left: 20px; right: 20px; } }
+@media (max-width: 640px) { .immersive-watch { height: 100dvh; min-height: 620px; } }
+@media (max-width: 640px) { .immersive-panels { position: absolute; inset: 0; min-height: 0; padding: 0; } }
+@media (max-width: 640px) { .immersive-panels .player-top-controls { top: 82px; } }
+@media (max-width: 640px) { .immersive-panels .player-top-controls .watch-field { flex: 1 1 calc(50% - 12px); } }
+@media (max-width: 640px) { .immersive-panels .theater-stage { position: absolute; left: 20px; right: 20px; top: auto; bottom: 295px; padding: 0; } }
+@media (max-width: 640px) { .immersive-watch[data-mode="watch"] .immersive-panels .theater-stage { padding: 0; } }
+@media (max-width: 640px) { .immersive-panels .section-heading h1 { font-size: 24px; } }
+@media (max-width: 640px) { .cinema-primary-actions { margin-top: 12px; } }
+@media (max-width: 640px) { .cinema-synopsis { display: none; } }
+@media (max-width: 640px) { .player-bottom-dock { bottom: 70px; } }
+@media (max-width: 640px) { .episode-row { flex-basis: 155px; } }
+@media (max-width: 640px) { .episode-name { font-size: 12px; } }
+@media (max-width: 640px) { .player-dock-heading { gap: 12px; } }
+@media (max-width: 640px) { .player-dock-heading > span { display: none; } }
+@media (max-width: 640px) { .episode-navigation button { padding: 0 8px; } }
+@media (max-width: 640px) { .immersive-panels .theater-episodes { margin: 0; } }
+
+.episode-number:empty { display: none; }
+
+.episode-rail-navigation { position: absolute; top: 0; right: 100px; display: flex; gap: 8px; }
+.episode-rail-navigation button { display: grid; place-items: center; width: 30px; height: 30px; background: transparent; color: #ccc; border-radius: 4px; border: 1px solid #ffffff20; }
+.episode-rail-navigation button:hover { color: white; border-color: #ffffff60; }
+@media (max-width: 640px) { .episode-rail-navigation { right: 95px; } }
+.immersive-information::before { display: none; }
+.immersive-information { box-shadow: none; backdrop-filter: none; background: linear-gradient(to bottom, transparent 0, rgba(6,6,6,.35) 90px, rgba(6,6,6,.85) 240px, #060606 440px); padding-top: 90px; }
+.player-unified-controls { display: flex; gap: 20px; align-items: center; margin-bottom: 18px; pointer-events: auto; }
+.player-play-button { display: flex; gap: 8px; align-items: center; height: 38px; padding: 0 16px; background: white; color: black; border-radius: 4px; font-size: 13px; font-weight: 600; }
+.player-play-button svg { width: 17px; height: 17px; }
+.player-play-button:disabled { opacity: .3; }
+.player-episode-select select { height: 38px; background: #0007; color: #ddd; border: 1px solid #ffffff20; border-radius: 4px; padding: 0 26px 0 12px; font-size: 13px; }
+.player-unified-controls .cinema-info-button { margin-left: auto; background: transparent; border: 0; padding: 8px; backdrop-filter: none; }
+.player-fullscreen-button { display: grid; place-items: center; width: 38px; height: 38px; color: #ddd; }
+.player-fullscreen-button svg { width: 22px; height: 22px; }
+.player-unified-controls .auto-next-switch { margin-left: 4px; }
+.episode-rail-navigation { position: static; justify-content: flex-end; margin-bottom: 6px; }
+.player-timeline { display: flex; gap: 12px; align-items: center; color: #aaa; font-size: 12px; margin: 0 0 18px; }
+.player-timeline input[aria-label="Позиция воспроизведения"] { flex: 1; accent-color: white; }
+.player-timeline input[aria-label="Громкость"] { width: 80px; accent-color: white; }
+.player-fullscreen-message { color: #aaa; font-size: 12px; margin-bottom: 12px; }
+.immersive-watch:fullscreen { margin: 0; background: black; isolation: isolate; height: 100dvh; width: 100vw; }
+.immersive-watch:fullscreen .player-top-controls { top: 26px; }
+@media (max-width: 640px) { .player-unified-controls { gap: 10px; flex-wrap: wrap; } }
+@media (max-width: 640px) { .player-play-button { padding: 0 12px; } }
+@media (max-width: 640px) { .player-unified-controls .auto-next-switch { flex: 1; } }
+@media (max-width: 640px) { .player-unified-controls .cinema-info-button { margin-left: 0; font-size: 12px; } }
+@media (max-width: 640px) { .player-episode-select select { font-size: 12px; padding-left: 8px; } }
+@media (max-width: 640px) { .player-bottom-dock { bottom: 28px; } }
+@media (max-width: 640px) { .player-timeline input[aria-label="Громкость"] { display: none; } }
+
+.immersive-panels .player-bottom-dock .theater-stage { position: static; inset: auto; max-width: 640px; margin-bottom: 20px; padding: 0; }
+.immersive-watch[data-mode="watch"] .player-bottom-dock .theater-stage { margin-bottom: 16px; }
+@media (max-width: 640px) { .immersive-panels .player-bottom-dock .theater-stage { margin-bottom: 14px; } }
+@media (max-width: 640px) { .player-unified-controls { column-gap: 8px; row-gap: 10px; } }
+@media (max-width: 640px) { .player-unified-controls .episode-navigation { gap: 4px; } }
+@media (max-width: 640px) { .player-unified-controls .auto-next-switch { font-size: 11px; } }
+
+.player-timeline { min-width: 0; }
+
+@media (min-width: 641px) and (max-width: 1100px) { .player-unified-controls { flex-wrap: wrap; gap: 12px; } }
+.immersive-video { inset: 0; transition: none; }
+.immersive-watch .player-bottom-dock { bottom: 18px; }
+.immersive-panels .player-bottom-dock .theater-stage,
+.immersive-watch[data-mode="watch"] .player-bottom-dock .theater-stage { max-width: none; margin-bottom: 12px; }
+.immersive-panels .player-bottom-dock .section-heading h1,
+.immersive-watch[data-mode="watch"] .player-bottom-dock .section-heading h1 { font-size: 18px; font-weight: 600; color: #eee; letter-spacing: -.02em; }
+.immersive-panels .player-bottom-dock .section-heading p { margin-top: 5px; }
+.immersive-watch .player-unified-controls { margin-bottom: 8px; }
+@media (prefers-reduced-motion: reduce) { .immersive-video { transition: none; } }
+.immersive-watch .immersive-panels { position: fixed; inset: 0; min-height: 0; }
+
+.episode-preview-empty { display: flex; height: 100%; min-height: 105px; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #ffffff08, #ffffff02); }
+.episode-preview-empty > span { font-size: 26px; font-weight: 500; color: #888; font-variant-numeric: tabular-nums; }
+.episode-preview-empty small { font-size: 10px; color: #666; }
+.immersive-panels .theater-episodes { position: relative; }
+.episode-rail-navigation { position: absolute; top: 4px; left: 0; right: 0; height: 105px; display: flex; align-items: center; justify-content: space-between; margin: 0; pointer-events: none; z-index: 3; }
+.episode-rail-navigation button { pointer-events: auto; width: 30px; height: 46px; background: #080808b8; border-color: #ffffff20; border-radius: 3px; backdrop-filter: blur(10px); }
+
+.immersive-watch .player-bottom-dock { bottom: 44px; }
+.current-episode-number { display: block; font-size: 11px; color: #888; margin-bottom: 6px; }
+.immersive-panels .player-bottom-dock .current-episode-summary { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: 12px; line-height: 1.6; color: #999; max-width: 720px; margin-top: 9px; }
+.immersive-watch .player-unified-controls { margin-bottom: 12px; }
+.episode-caption .episode-number { font-size: 12px; font-weight: 500; color: #ccc; }
+.episode-caption .episode-name { font-size: 13px; line-height: 1.4; }
+@media (max-width: 640px) { .immersive-watch .player-bottom-dock { bottom: 28px; } }
+@media (max-width: 640px) { .immersive-panels .player-bottom-dock .current-episode-summary { -webkit-line-clamp: 1; } }
+
+.player-heading-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; margin-bottom: 18px; }
+.player-heading-row .theater-stage { flex: 1; min-width: 0; }
+.player-heading-row .player-unified-controls { flex: 0 0 auto; padding-top: 16px; margin: 0; flex-wrap: nowrap; }
+.immersive-panels .player-heading-row .theater-stage { margin-bottom: 0; }
+@media (max-width: 1100px) { .player-heading-row { flex-wrap: wrap; gap: 14px; } }
+@media (max-width: 1100px) { .player-heading-row .theater-stage { flex-basis: 100%; } }
+@media (max-width: 1100px) { .player-heading-row .player-unified-controls { padding-top: 0; flex-wrap: wrap; } }
+
+.episode-summary { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; color: var(--muted-foreground, #999); font-size: .8rem; line-height: 1.45; margin-top: .25rem; }
+.immersive-watch { height: 100dvh; min-height: 0; scroll-margin-top: 0; }
+.immersive-watch .immersive-panels { transform: none; opacity: 1; visibility: visible; transition: opacity 180ms ease; }
+.immersive-watch[data-in-view="false"] .immersive-panels { opacity: 0; visibility: hidden; pointer-events: none; }
+body:has(.immersive-watch[data-in-view="false"]) .site-header { opacity: 1; pointer-events: auto; }
+.immersive-panels .player-top-controls { gap: 14px; flex-wrap: wrap; align-items: flex-end; }
+.immersive-panels .player-top-controls .watch-field { flex: 0 1 180px; }
+.immersive-watch .player-unified-controls { margin: 0 0 0 auto; gap: 12px; flex-wrap: wrap; }
+.episode-panel-toggle { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 12px; border: 1px solid #ffffff35; border-radius: 3px; background: #08080888; backdrop-filter: blur(12px); color: #eee; font-size: 12px; }
+.episode-panel-toggle svg { width: 16px; height: 16px; }
+.episode-panel-toggle:hover { background: #ffffff20; }
+.episode-panel-toggle:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+.episode-overlay { position: absolute; left: 36px; right: 36px; bottom: 120px; pointer-events: none; opacity: 1; visibility: visible; transform: translateY(0); transition: opacity 220ms ease, transform 220ms ease, visibility 0s; }
+.episode-overlay::before { content: ""; position: absolute; inset: -24px -36px -20px; z-index: -1; pointer-events: none; background: linear-gradient(to bottom, transparent, #0009 28%, #000b 75%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent); }
+.immersive-watch[data-rail="closed"] .episode-overlay { opacity: 0; visibility: hidden; transform: translateY(14px); transition: opacity 220ms ease, transform 220ms ease, visibility 0s 220ms; }
+.episode-overlay-heading { max-width: 680px; margin-bottom: 16px; text-shadow: 0 1px 5px #000; }
+.episode-overlay-heading h1 { font-size: 18px; line-height: 1.35; font-weight: 600; }
+.episode-overlay-heading .current-anime-title { color: #bbb; font-size: 11px; margin-top: 4px; }
+.episode-overlay-heading .current-episode-summary { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden; color: #bbb; font-size: 12px; line-height: 1.6; margin-top: 6px; }
+.episode-overlay .theater-episodes { pointer-events: none; }
+.episode-overlay .episode-list { pointer-events: auto; max-height: 230px; overflow-y: auto; }
+.episode-overlay .episode-row { flex-basis: 190px; }
+.episode-overlay .episode-state { display: none; }
+.immersive-panels .player-fullscreen-message { position: absolute; top: 175px; right: 36px; font-size: 12px; }
+.immersive-watch:fullscreen, .immersive-watch:-webkit-full-screen { background: #000; }
+.immersive-watch:fullscreen .immersive-video, .immersive-watch:-webkit-full-screen .immersive-video { z-index: 0; }
+.immersive-watch:fullscreen .immersive-panels, .immersive-watch:-webkit-full-screen .immersive-panels { z-index: 2; }
+@media (max-width: 1100px) { .immersive-watch .player-unified-controls { margin-left: 0; } }
+@media (max-width: 640px) { .immersive-panels .player-top-controls { gap: 8px; left: 16px; right: 16px; } }
+@media (max-width: 640px) { .immersive-panels .player-top-controls .watch-field { flex: 1 1 calc(50% - 8px); } }
+@media (max-width: 640px) { .episode-overlay { left: 16px; right: 16px; bottom: 100px; } }
+@media (max-width: 640px) { .episode-overlay-heading { margin-bottom: 10px; } }
+@media (max-width: 640px) { .episode-overlay-heading h1 { font-size: 15px; } }
+@media (max-width: 640px) { .episode-overlay .episode-list { max-height: 160px; } }
+@media (max-width: 640px) { .episode-overlay .episode-row { flex-basis: 155px; } }
+@media (max-width: 640px) { .episode-overlay .episode-summary { display: none; } }
+@media (max-width: 640px) { .episode-panel-toggle { padding: 0 8px; } }
+@media (max-height: 560px) { .episode-overlay-heading .current-episode-summary, .episode-overlay-heading .current-anime-title { display: none; } }
+@media (max-height: 560px) { .episode-overlay .episode-list { max-height: 145px; } }
+@media (prefers-reduced-motion: reduce) { .episode-overlay, .immersive-watch .immersive-panels { transition: none !important; } }
+
+.immersive-panels .player-top-controls::before { content: ""; position: absolute; inset: -22px -36px -38px; z-index: -1; pointer-events: none; background: linear-gradient(to bottom, #0009, #0008 60%, transparent); }
+.immersive-panels .player-top-controls { isolation: isolate; }
+.immersive-panels .player-top-controls .auto-next-switch { color: #eee; text-shadow: 0 1px 4px #000; }
+.immersive-panels .player-top-controls .episode-panel-toggle { background: #080808b8; color: white; }
+.immersive-panels .player-top-controls .episode-navigation button, .immersive-panels .player-top-controls .player-episode-select select { background: #080808a8; color: white; border-color: #ffffff30; }
+.episode-overlay { isolation: isolate; }
+.episode-overlay::before { inset: -32px -36px -36px; background: linear-gradient(to bottom, transparent, #000b 20%, #000c 85%, transparent); mask-image: linear-gradient(to bottom, transparent, black 18%, black 85%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 18%, black 85%, transparent); }
+.episode-overlay .episode-number, .episode-overlay .episode-name { color: #eee; text-shadow: 0 1px 4px #000; }
+.episode-dwell-zone { position: absolute; bottom: 76px; left: 35%; right: 35%; height: 32px; pointer-events: auto; display: grid; place-items: center; color: #ddd; font-size: 11px; background: linear-gradient(to right, transparent, #0006, transparent); border: 0; border-radius: 0; }
+.episode-dwell-zone::before { content: ""; position: absolute; top: 0; left: 40%; right: 40%; height: 2px; background: #ffffff60; }
+.episode-dwell-zone span { opacity: .65; transition: opacity 180ms; }
+.episode-dwell-zone:hover span, .episode-dwell-zone:focus-visible span { opacity: 1; }
+.episode-dwell-zone:focus-visible { outline: 1px solid white; outline-offset: 2px; }
+@media (max-width: 640px) { .episode-dwell-zone { bottom: 64px; left: 25%; right: 25%; height: 28px; } }
+@media (max-width: 640px) { .episode-overlay::before { left: -16px; right: -16px; } }
+.immersive-panels .player-top-controls::before { position: fixed; inset: 0 0 auto; height: 210px; background: linear-gradient(to bottom, #0009 0%, #0006 48%, transparent 100%); }
+.episode-overlay { bottom: 64px; }
+.episode-overlay::before { position: fixed; inset: auto 0 0; height: 390px; background: linear-gradient(to bottom, transparent 0%, #0005 30%, #000a 65%, #000b 100%); backdrop-filter: none; -webkit-backdrop-filter: none; mask-image: none; -webkit-mask-image: none; }
+.episode-overlay-heading { margin-bottom: 12px; }
+.episode-overlay .theater-episodes { margin-top: 0; }
+.episode-dwell-zone { bottom: 64px; height: 36px; left: 25%; right: 25%; background: transparent; color: transparent; }
+.episode-dwell-zone::before { content: none; }
+.episode-dwell-zone:focus-visible { outline: 1px solid #ffffff70; }
+@media (max-width: 640px) { .episode-overlay { bottom: 58px; } }
+@media (max-width: 640px) { .episode-dwell-zone { bottom: 58px; } }
+@media (max-width: 640px) { .episode-overlay::before { inset: auto 0 0; height: 310px; } }
+
+.episode-overlay, .immersive-watch[data-rail="closed"] .episode-overlay { transform: none; transition: opacity 220ms ease, visibility 0s; }
+.immersive-watch[data-rail="closed"] .episode-overlay { transition: opacity 220ms ease, visibility 0s 220ms; }
+.episode-dwell-zone { left: calc(50% - 72px); right: auto; width: 144px; background: transparent; }
+.episode-dwell-zone::before { content: ""; position: absolute; top: 14px; left: 42px; right: 42px; height: 3px; border-radius: 2px; background: #ffffff70; box-shadow: 0 1px 6px #0009; transition: background 180ms ease, transform 180ms ease; }
+.episode-dwell-zone:hover::before, .episode-dwell-zone:focus-visible::before { background: #fff; transform: scaleX(1.2); }
+.episode-dwell-zone::after { content: ""; position: absolute; inset: 4px 26px; border: 1px solid #ffffff18; border-radius: 4px; background: #0002; opacity: .5; transition: opacity 180ms ease; }
+.episode-dwell-zone:hover::after, .episode-dwell-zone:focus-visible::after { opacity: 1; }
+@media (max-width: 640px) { .episode-dwell-zone { left: calc(50% - 72px); right: auto; height: 36px; } }
+@media (prefers-reduced-motion: reduce) { .episode-dwell-zone::before, .episode-dwell-zone::after { transition: none; } }
+
+.episode-picker { position: relative; min-width: 165px; font-size: 12px; }
+.episode-picker summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; height: 40px; padding: 0 12px; list-style: none; cursor: pointer; background: #080808a8; border: 1px solid #ffffff30; border-radius: 3px; color: #eee; }
+.episode-picker summary::-webkit-details-marker { display: none; }
+.episode-picker summary svg { width: 14px; height: 14px; transform: rotate(90deg); }
+.episode-picker[open] summary svg { transform: rotate(-90deg); }
+.episode-picker-menu { position: absolute; top: calc(100% + 8px); right: 0; width: 300px; max-width: calc(100vw - 40px); padding: 10px; background: #111f; border: 1px solid #ffffff25; border-radius: 4px; box-shadow: 0 12px 28px #0006; z-index: 5; }
+.episode-picker-menu input { width: 100%; height: 36px; padding: 0 10px; background: #ffffff08; color: white; border: 1px solid #ffffff20; border-radius: 3px; outline: none; }
+.episode-picker-menu input:focus { border-color: #ffffff70; }
+.episode-picker-results { max-height: min(340px, 45dvh); overflow-y: auto; margin-top: 8px; overscroll-behavior: contain; scrollbar-width: thin; }
+.episode-navigation .episode-picker-results button { width: 100%; height: auto; min-height: 38px; padding: 9px 10px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; border: 0; background: transparent; text-align: left; border-radius: 3px; }
+.episode-navigation .episode-picker-results button:hover, .episode-picker-results button[aria-current="true"] { background: #ffffff12; }
+.episode-picker-results small { color: #aaa; font-size: 11px; line-height: 1.4; }
+.episode-picker-results p { padding: 16px 10px; color: #999; }
+.episode-picker summary:focus-visible, .episode-picker-results button:focus-visible { outline: 1px solid white; outline-offset: 2px; }
+.immersive-watch[data-controls="hidden"] .immersive-panels { opacity: 1; visibility: visible; transform: none; }
+.immersive-watch .player-top-controls { transition: opacity 220ms ease; }
+.immersive-watch[data-controls="hidden"] .player-top-controls, .immersive-watch[data-controls="hidden"] .episode-overlay { opacity: 0; visibility: hidden; pointer-events: none; }
+.immersive-watch[data-controls="hidden"] .episode-overlay .episode-list, .immersive-watch[data-controls="hidden"] .episode-overlay .episode-rail-navigation button { pointer-events: none; }
+.immersive-watch[data-controls="hidden"] .episode-dwell-zone::before, .immersive-watch[data-controls="hidden"] .episode-dwell-zone::after { opacity: 0; }
+body:has(.immersive-watch[data-controls="hidden"][data-in-view="true"]) .site-header { opacity: 0; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .immersive-watch .player-top-controls { transition: none; } }
+.episode-dwell-zone { left: 8%; right: 8%; width: auto; height: 42px; background: none; border: 0; box-shadow: none; }
+.episode-dwell-zone::before { left: calc(50% - 30px); right: auto; width: 60px; top: 18px; }
+.episode-dwell-zone::after { content: none; }
+.player-wake-edges { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+.player-wake-edges > span { position: absolute; pointer-events: auto; background: none; }
+.player-wake-top { top: 0; left: 0; right: 0; height: 76px; }
+.player-wake-left { top: 76px; bottom: 110px; left: 0; width: 24px; }
+.player-wake-right { top: 76px; bottom: 110px; right: 0; width: 24px; }
+.immersive-watch[data-in-view="false"] .player-wake-edges { display: none; }
+@media (max-width: 640px) { .episode-dwell-zone { left: 8%; right: 8%; width: auto; height: 36px; } }
+@media (max-width: 640px) { .episode-dwell-zone::before { top: 15px; } }
+@media (max-width: 640px) { .player-wake-left, .player-wake-right { width: 12px; } }
+
+.release-countdown { display: block; color: #eee; font-size: 11px; line-height: 1.5; margin-top: 5px; }
+.episode-overlay .airing-schedule { margin: 0 0 12px; padding: 0; border: 0; }
+.episode-overlay .airing-schedule h3 { display: inline; font-size: 11px; color: #aaa; margin-right: 12px; }
+.episode-overlay .airing-schedule strong, .episode-overlay .airing-schedule time { font-size: 11px; }
+.episode-overlay .airing-schedule p { display: inline; margin: 0; font-size: 11px; }
+.episode-overlay .airing-schedule .release-countdown { display: inline; margin-left: 12px; }
+
+.episode-upcoming-preview { display: flex; align-items: center; justify-content: center; gap: 12px; background: #ffffff07; border: 1px dashed #ffffff25; }
+.episode-upcoming-preview > span { font-size: 32px; color: #aaa; font-variant-numeric: tabular-nums; }
+.episode-upcoming-preview > svg { width: 18px; height: 18px; color: #777; }
+.episode-upcoming-date { color: #999; font-size: 11px; margin-top: 4px; }
+
+.episode-upcoming-preview .release-countdown { margin: 0; padding: 12px; color: #eee; font-size: 16px; font-weight: 500; line-height: 1.5; text-align: center; font-variant-numeric: tabular-nums; }

@@ -1,0 +1,31 @@
+/* catalog styles: owned by this feature. */
+
+
+.catalog-heading { display: flex; align-items: baseline; justify-content: space-between; padding-top: 24px; }
+.catalog-heading h1 { font-size: 24px; font-weight: 650; letter-spacing: -.03em; }
+.catalog-heading > span, .catalog-results-heading > span { font-size: 12px; color: #888; }
+.catalog-content .browse-hero { padding-top: 0; }
+.catalog-filters { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; padding: 24px 0; border-bottom: 1px solid #ffffff12; }
+.catalog-filters label { display: flex; flex-direction: column; gap: 8px; flex: 1 1 120px; }
+.catalog-filters label > span { color: #999; font-size: 11px; }
+.catalog-filters select, .catalog-search { height: 40px; background: #1119; border: 1px solid #ffffff20; border-radius: 4px; color: #ddd; padding: 0 10px; font-size: 13px; }
+.catalog-filters select option { background: #111; }
+.catalog-filters .catalog-search { flex: 2 1 230px; flex-direction: row; align-items: center; gap: 10px; }
+.catalog-search svg { width: 16px; color: #888; }
+.catalog-search input { width: 100%; min-width: 0; background: transparent; outline: none; }
+.catalog-reset { height: 40px; padding: 0 12px; color: #bbb; font-size: 12px; }
+.catalog-results-heading { display: flex; justify-content: space-between; align-items: center; margin: 24px 0 16px; }
+.catalog-results-heading h2 { font-size: 18px; font-weight: 600; }
+.catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 28px 18px; }
+.catalog-grid > a { min-width: 0; animation: heroFade .35s ease; }
+.catalog-grid .rounded-2xl { border-radius: 6px; }
+.catalog-grid .rounded-full { border-radius: 4px; }
+.catalog-load-more { display: flex; justify-content: center; min-height: 100px; align-items: center; color: #777; font-size: 12px; }
+.catalog-load-more button, .catalog-empty button { padding: 10px 22px; border: 1px solid #ffffff30; border-radius: 4px; color: #ddd; }
+.catalog-empty { padding: 60px 0; text-align: center; }
+.catalog-empty button { margin-top: 16px; }
+@media (max-width: 640px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; } }
+@media (max-width: 640px) { .catalog-filters { gap: 12px; } }
+@media (max-width: 640px) { .catalog-filters label { flex-basis: calc(50% - 12px); } }
+@media (max-width: 640px) { .catalog-filters .catalog-search { flex-basis: 100%; } }
+@media (prefers-reduced-motion: reduce) { .catalog-grid > a { animation: none; } }

@@ -1,0 +1,35 @@
+/* Episode cards respond individually without adding card backgrounds. */
+.rail :global(.episode-row) { cursor: pointer; outline: none; }
+.rail :global(.episode-row) :global(.episode-thumbnail) { transition: box-shadow 180ms ease; }
+.rail :global(.episode-row) :global(.episode-thumbnail) img { transition: transform 240ms ease, filter 180ms ease; }
+.rail :global(.episode-row) :global(.episode-playing) { opacity: 0; background: #0003; transition: opacity 180ms ease; }
+.rail :global(.episode-row).selected :global(.episode-playing),
+.rail :global(.episode-row):not(:disabled):focus-visible :global(.episode-playing) { opacity: 1; }
+.rail :global(.episode-row) :global(.episode-playing) svg { width: 30px; height: 30px; padding: 7px; border-radius: 50%; color: #111; background: #fff; box-shadow: 0 2px 12px #0004; }
+.rail :global(.episode-row) :global(.episode-name),
+.rail :global(.episode-row) :global(.episode-number),
+.rail :global(.episode-row) :global(.episode-state) { transition: color 180ms ease; }
+.rail :global(.episode-row):not(:disabled):focus-visible :global(.episode-thumbnail) { box-shadow: inset 0 0 0 2px #fff; outline: 2px solid #fff; outline-offset: -2px; }
+.rail :global(.episode-row):not(:disabled):focus-visible :global(.episode-name),
+.rail :global(.episode-row):not(:disabled):focus-visible :global(.episode-number),
+.rail :global(.episode-row):not(:disabled):focus-visible :global(.episode-state) { color: #fff; }
+@media (any-hover: hover) {
+  .rail :global(.episode-row):not(:disabled):hover :global(.episode-thumbnail) { box-shadow: inset 0 0 0 1px #ffffff80; }
+  .rail :global(.episode-row):not(:disabled):hover :global(.episode-thumbnail) img { transform: scale(1.045); filter: brightness(1.08); }
+  .rail :global(.episode-row):not(:disabled):hover :global(.episode-playing) { opacity: 1; }
+  .rail :global(.episode-row):not(:disabled):hover :global(.episode-name),
+  .rail :global(.episode-row):not(:disabled):hover :global(.episode-number),
+  .rail :global(.episode-row):not(:disabled):hover :global(.episode-state) { color: #fff; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rail :global(.episode-row) :global(.episode-thumbnail),
+  .rail :global(.episode-row) :global(.episode-thumbnail) img,
+  .rail :global(.episode-row) :global(.episode-playing),
+  .rail :global(.episode-row) :global(.episode-name),
+  .rail :global(.episode-row) :global(.episode-number),
+  .rail :global(.episode-row) :global(.episode-state) { transition: none; }
+  .rail :global(.episode-row):not(:disabled):hover :global(.episode-thumbnail) img { transform: none; }
+}
+
+/* Small wheel deltas must not snap back to the current card. */
+.rail { scroll-snap-type: none; scroll-behavior: auto; }

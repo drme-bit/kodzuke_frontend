@@ -1,0 +1,45 @@
+/* community styles: owned by this feature. */
+
+
+.anime-gallery, .anime-community > section { margin-top: 36px; padding-top: 24px; border-top: 1px solid #ffffff18; }
+.anime-section-heading { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 20px; }
+.anime-section-heading h3 { font-size: 18px; font-weight: 600; }
+.anime-section-heading > span { color: #aaa; font-size: 13px; }
+.anime-section-heading small { font-size: 11px; color: #777; margin-left: 8px; }
+.anime-gallery-strip { display: flex; gap: 12px; overflow-x: auto; scrollbar-width: none; }
+.anime-gallery-strip img { flex: 0 0 240px; width: 240px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; }
+.anime-gallery-empty { min-height: 140px; display: grid; place-items: center; border: 1px dashed #ffffff18; border-radius: 4px; color: #777; font-size: 13px; }
+.anime-rating > p { color: #aaa; font-size: 13px; }
+.anime-rating-options { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.anime-rating-options button { width: 40px; height: 40px; border: 1px solid #ffffff18; border-radius: 4px; color: #777; cursor: not-allowed; }
+.anime-rating .anime-placeholder-note { margin-top: 12px; font-size: 12px; color: #777; }
+.anime-comment-placeholder { display: flex; gap: 16px; min-height: 120px; align-items: flex-start; padding: 20px 0; }
+.anime-comment-avatar { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 4px; background: #ffffff0c; color: #777; }
+.anime-comment-placeholder p { font-size: 14px; color: #aaa; }
+.anime-comment-placeholder div > span { display: block; margin-top: 8px; font-size: 12px; color: #777; }
+
+.anime-gallery-strip { scroll-snap-type: none; scroll-behavior: auto; overscroll-behavior-x: contain; }
+.anime-gallery-strip > button { flex: 0 0 240px; overflow: hidden; border-radius: 4px; cursor: zoom-in; }
+.anime-gallery-strip > button img { display: block; transition: transform 180ms ease; }
+.anime-gallery-strip > button:hover img { transform: scale(1.035); }
+.anime-gallery-strip > button:focus-visible { outline: 2px solid white; outline-offset: -2px; }
+.gallery-viewer { position: fixed; inset: 0; margin: auto; width: min(1280px, 96vw); max-width: 96vw; max-height: 94dvh; border: 0; padding: 16px; color: white; background: transparent; pointer-events: auto; }
+.gallery-viewer::backdrop { background: #000e; backdrop-filter: blur(8px); }
+.gallery-viewer-content header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; color: #bbb; font-size: 12px; }
+.gallery-viewer button { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 3px; background: #ffffff0a; color: white; }
+.gallery-viewer button:hover { background: #ffffff20; }
+.gallery-viewer button svg { width: 22px; height: 22px; }
+.gallery-viewer-image { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.gallery-viewer-image img { min-width: 0; max-width: calc(100% - 104px); max-height: 78dvh; object-fit: contain; }
+.gallery-viewer-image button { flex-shrink: 0; }
+@media (max-width: 640px) { .gallery-viewer { padding: 8px; } }
+@media (max-width: 640px) { .gallery-viewer-image { gap: 4px; } }
+@media (max-width: 640px) { .gallery-viewer-image button { width: 28px; } }
+@media (max-width: 640px) { .gallery-viewer-image img { max-width: calc(100% - 64px); } }
+@media (prefers-reduced-motion: reduce) { .anime-gallery-strip > button img { transition: none; } }
+
+.airing-schedule { margin-top: 28px; padding: 20px 0; border-top: 1px solid #ffffff18; }
+.airing-schedule h3 { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+.airing-schedule strong { font-size: 13px; margin-right: 16px; }
+.airing-schedule time { font-size: 13px; color: #ddd; }
+.airing-schedule p { font-size: 12px; color: #999; margin-top: 8px; }

@@ -1,0 +1,18 @@
+/* browse styles: owned by this feature. */
+
+.browse-page { position: relative; isolation: isolate; background: #060606; }
+.browse-backdrop { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.browse-backdrop-media { position: absolute; inset: -30px; filter: blur(14px); opacity: .48; animation: browseSceneIn .8s ease both; }
+.browse-backdrop-image { position: absolute; inset: 0; background-size: cover; background-position: center 25%; }
+.browse-backdrop-trailer { position: absolute; top: 50%; left: 50%; width: max(110vw, 195.56vh); height: max(61.875vw, 110vh); transform: translate(-50%, -50%); }
+.browse-backdrop-shade { position: absolute; inset: 0; background: linear-gradient(to bottom, #06060650 0%, #06060675 30%, #060606c9 65%, #060606f5 100%), linear-gradient(90deg, #06060685, transparent 75%); }
+.browse-hero { background: transparent; }
+@keyframes browseSceneIn { from { opacity: 0; } to { opacity: .48; } }
+@media (prefers-reduced-motion: reduce) { .browse-backdrop-media { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .browse-backdrop-trailer { display: none; } }
+.browse-hero { position: sticky; top: 80px; z-index: 20; isolation: isolate; background: transparent; backdrop-filter: none; }
+.browse-hero::before { content: ""; position: absolute; top: -240px; bottom: -42px; left: calc((100vw - 100%) / -2); right: calc((100vw - 100%) / -2); z-index: -1; pointer-events: none; background: linear-gradient(to bottom, #060606d9, #060606b0 70%, #06060670); backdrop-filter: blur(18px); -webkit-mask-image: linear-gradient(to bottom, black, black calc(100% - 60px), transparent); mask-image: linear-gradient(to bottom, black, black calc(100% - 60px), transparent); }
+@media (max-width: 640px) { .browse-hero { top: 70px; } }
+@media (max-width: 640px) { .browse-hero > div { min-height: 280px; padding-top: 18px; padding-bottom: 20px; } }
+@media (max-width: 640px) { .browse-hero h2 { font-size: 26px; } }
+@media (max-width: 640px) { .browse-hero p.line-clamp-3 { -webkit-line-clamp: 2; } }

@@ -4,14 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run check:styles && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "npm run check:styles && eslint",
+    "check:styles": "node scripts/check-style-boundaries.mjs"
   },
   "dependencies": {
+    "graphql-request": "^7.4.0",
+    "hls.js": "^1.7.1",
     "next": "16.3.3",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "react-icons": "^5.7.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
