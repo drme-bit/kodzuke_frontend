@@ -11,16 +11,16 @@ import { useCatalogPage } from "@/features/browse/useCatalogPage";
 import { BrowseBackdrop } from "@/features/browse/components/BrowseBackdrop";
 import { BrowseHero } from "@/features/browse/components/BrowseHero";
 
-type Props = { initialPage: CatalogPage | null };
+type Props = { initialPage: CatalogPage | null; initialStatus?: string };
 
-export function CatalogClient({ initialPage }: Props) {
+export function CatalogClient({ initialPage, initialStatus = "all" }: Props) {
   const { tui } = useLocalization();
   const params = useParams() as { locale: string };
   const locale = params?.locale ?? "ru";
 
   const [q, setQ] = useState("");
   const [type, setType] = useState<string>("all");
-  const [status, setStatus] = useState<string>("all");
+  const [status, setStatus] = useState<string>(initialStatus);
   const [season, setSeason] = useState<string>("all");
   const [year, setYear] = useState<string>("all");
   const [sort, setSort] = useState<"score" | "year" | "title">("score");

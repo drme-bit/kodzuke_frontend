@@ -44,13 +44,6 @@ export function NavBar() {
               {tui("home")}
             </Link>
             <Link
-              href={`/${locale}/catalog`}
-              aria-current={pathname?.includes("/catalog") ? "page" : undefined}
-              className={`rounded-md px-3.5 py-1.5 text-[13.5px] font-medium transition ${pathname?.includes("/catalog") ? "bg-white text-black" : "text-white/60 hover:bg-white/10 hover:text-white"}`}
-            >
-              {tui("catalog")}
-            </Link>
-            <Link
                 href={`/${locale}/browse`}
                 aria-current={isBrowse ? "page" : undefined}
                 className={`rounded-md px-3.5 py-1.5 text-[13.5px] font-medium transition ${
@@ -58,6 +51,13 @@ export function NavBar() {
                 }`}
             >
               {tui("browse")}
+            </Link>
+            <Link
+                href={`/${locale}/catalog`}
+                aria-current={pathname?.includes("/catalog") ? "page" : undefined}
+                className={`rounded-md px-3.5 py-1.5 text-[13.5px] font-medium transition ${pathname?.includes("/catalog") ? "bg-white text-black" : "text-white/60 hover:bg-white/10 hover:text-white"}`}
+            >
+              {tui("catalog")}
             </Link>
           </nav>
         </div>

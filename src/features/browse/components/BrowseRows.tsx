@@ -84,10 +84,6 @@ function RowScroll({ row, locale, active, onHover }: { row: Row; locale: string;
       </div>
 
       <div className="relative">
-        {/* blur edges */}
-        <div className={`pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[#060606] via-[#060606]/70 to-transparent transition-opacity ${canLeft ? "opacity-100" : "opacity-0"}`} />
-        <div className={`pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[#060606] via-[#060606]/70 to-transparent transition-opacity ${canRight ? "opacity-100" : "opacity-0"}`} />
-
         {/* arrows */}
         <button
           onClick={() => scroll(-1)}
@@ -113,7 +109,7 @@ function RowScroll({ row, locale, active, onHover }: { row: Row; locale: string;
                 href={`/${locale}/anime/${encodeURIComponent(a.slug)}`}
                 onMouseEnter={() => onHover(a, row.id)}
                 onFocus={() => onHover(a, row.id)}
-                className={`shrink-0 rounded-2xl transition duration-300 will-change-transform ${isActive ? "-translate-y-1 scale-[1.02] shadow-[0_12px_32px_rgba(0,0,0,0.5),0_0_24px_rgba(255,255,255,0.10)]" : "hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_12px_32px_rgba(0,0,0,0.45)]"}`}
+                className={`shrink-0 rounded-2xl transition duration-300 will-change-transform ${isActive ? "-translate-y-1 scale-[1.02]" : "hover:-translate-y-1 hover:scale-[1.02]"}`}
               >
                 <AnimeCard anime={a} showTrailer={false} />
               </Link>

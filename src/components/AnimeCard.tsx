@@ -32,7 +32,7 @@ export function AnimeCard({ anime, showTrailer = true, className }: { anime: Ani
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-zinc-900 border border-white/10 transition-all duration-300 group-hover:border-white/15 group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.55)] group-hover:-translate-y-0.5">
+      <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-zinc-900 border border-white/10 transition-all duration-300 group-hover:border-white/15 group-hover:-translate-y-0.5">
         {anime.posterUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
