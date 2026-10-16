@@ -18,6 +18,9 @@ function load(file) {
     },
   }).outputText;
   const require = (specifier) => {
+    if (specifier === "@/i18n") return load(path.join(root, "index.ts"));
+    if (specifier.startsWith("@/i18n/"))
+      return load(path.join(root, specifier.slice("@/i18n/".length)) + ".ts");
     if (!specifier.startsWith("."))
       throw new Error(`Unexpected i18n dependency ${specifier}`);
     return load(path.resolve(path.dirname(file), specifier) + ".ts");

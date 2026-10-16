@@ -1,5 +1,5 @@
 import { normalizeLocale } from "@/i18n/config";
-import { safeReturnPath } from "../navigation";
+import { safeReturnPath } from "@/features/auth/navigation";
 import { AuthPage } from "./AuthPage";
 
 export interface AuthRouteProps {

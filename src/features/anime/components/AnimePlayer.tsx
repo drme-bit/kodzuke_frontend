@@ -20,7 +20,7 @@ import {
 } from "@/features/anime/playerSources";
 import { playbackSelection } from "@/features/anime/playbackSelection";
 import type { PlaybackState } from "@/features/anime/playbackEvents";
-import { useEpisodeMetadata } from "../hooks/useEpisodeMetadata";
+import { useEpisodeMetadata } from "@/features/anime/hooks/useEpisodeMetadata";
 import type { Episode } from "@/dto";
 interface AnimePlayerProps {
   schedule?: { airDate?: string; number?: number };

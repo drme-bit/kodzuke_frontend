@@ -25,6 +25,10 @@ for (const file of files) {
     if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) {
       const importPath = node.moduleSpecifier?.text;
       if (typeof importPath !== "string") continue;
+      if (importPath.startsWith("../"))
+        failures.push(
+          `${relative}: use @/ instead of parent-relative imports (${importPath})`,
+        );
       if (/^(?:@\/shared\/api|@\/lib\/(?:api|graphql))/.test(importPath))
         failures.push(`${relative}: legacy API import ${importPath}`);
       if (api && /@\/(?:features|app|components|i18n)(?:\/|$)/.test(importPath))

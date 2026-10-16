@@ -10,9 +10,9 @@ import { libraryCopy } from "@/i18n/messages/library";
 import { ProfileEditor } from "./ProfileEditor";
 import { profileCopy } from "@/i18n/messages/profile";
 import { signOut } from "@/features/auth/sessionActions";
-import { authUrl } from "../navigation";
+import { authUrl } from "@/features/auth/navigation";
 import { accessToken } from "@/shared/auth/session";
-import { useCurrentUser } from "../useCurrentUser";
+import { useCurrentUser } from "@/features/auth/useCurrentUser";
 import "@/features/library/library.css";
 
 export function AccountPage({

@@ -7,7 +7,7 @@ import type {
   CatalogPage,
 } from "@/dto";
 
-import { ANIME_FIELDS } from "../anime/fields";
+import { ANIME_FIELDS } from "@/api/anime/fields";
 
 export function createCatalogApi(gql: GraphQLRequester) {
   // ── anime ──────────────────────────────────────────────────────────────────────

@@ -9,10 +9,10 @@ import {
 import { animeTypeLabel, animeStatusLabel } from "@/i18n/anime";
 import { translator } from "@/i18n/ui";
 import { titleForLocale } from "@/i18n/content";
-import { AnimePlayer } from "../components/AnimePlayer";
-import { AnimeGallery } from "../components/AnimeGallery";
-import { AiringSchedule } from "../components/AiringSchedule";
-import { SeasonList } from "../components/SeasonList";
+import { AnimePlayer } from "@/features/anime/components/AnimePlayer";
+import { AnimeGallery } from "@/features/anime/components/AnimeGallery";
+import { AiringSchedule } from "@/features/anime/components/AiringSchedule";
+import { SeasonList } from "@/features/anime/components/SeasonList";
 
 export async function AnimePlayback({
   anime,

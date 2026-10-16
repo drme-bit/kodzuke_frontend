@@ -5,7 +5,7 @@ import { galleryCopy } from "@/i18n/messages/gallery";
 import { useLocalization } from "@/i18n/client";
 import { titleForLocale } from "@/i18n/content";
 import type { Anime } from "@/dto";
-import { useHeroMedia } from "../useHeroMedia";
+import { useHeroMedia } from "@/features/browse/useHeroMedia";
 import { HeroRatings } from "@/features/rating/HeroRatings";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState, type FormEvent } from "react";
 import { authenticate } from "@/features/auth/sessionActions";
 import { authCopy } from "@/i18n/messages/auth";
-import { authUrl } from "../navigation";
+import { authUrl } from "@/features/auth/navigation";
 import { accessToken } from "@/shared/auth/session";
 import { AuthLayout } from "./AuthLayout";
 

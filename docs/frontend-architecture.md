@@ -35,6 +35,9 @@ src/
 
 ## Import rules
 
+Use `@/` for imports from another directory under `src/`, for example `@/api/library` or `@/features/auth/navigation`. Same-directory `./` imports are allowed. The alias is defined by `compilerOptions.paths` in `tsconfig.json`, which TypeScript and Next.js read directly. VS Code auto-import preferences select non-relative paths; the architecture guard rejects `../` imports.
+
+
 - Components and hooks call named functions in `api/`. GraphQL strings and HTTP transport stay inside `api/`.
 - Routes load public data from `api/server/`. These modules and `api/graphql/server.ts` are guarded by `server-only`. The browser adapter is guarded by `client-only`.
 - `api/catalog/queries.ts` and `api/anime/fields.ts` are environment-neutral. The actual server/browser adapters set cache and authentication policy. There is no mixed runtime barrel for both environments.
