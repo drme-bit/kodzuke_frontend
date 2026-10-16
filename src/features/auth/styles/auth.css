@@ -1,0 +1,291 @@
+.account-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  place-items: stretch;
+  padding: 0;
+  min-height: 100dvh;
+  margin-top: -80px;
+  background: #080808;
+}
+.account-form-panel {
+  min-width: 0;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 120px 56px 64px;
+}
+.account-gallery {
+  width: 100%;
+  min-width: 0;
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  min-height: 600px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #111;
+}
+.account-poster-scene {
+  position: absolute;
+  inset: 0;
+  perspective: 1000px;
+  overflow: hidden;
+}
+.account-poster-wall {
+  position: absolute;
+  width: calc(100% + 220px);
+  left: -110px;
+  top: -24%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  transform: rotateX(14deg) rotateY(-18deg) rotateZ(12deg);
+  transform-origin: 50% 20%;
+}
+.account-poster-track {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: account-poster-drift 100s linear infinite;
+  will-change: transform;
+}
+.account-poster-column:nth-child(2) .account-poster-track {
+  animation-duration: 115s;
+}
+.account-poster-column:nth-child(3) .account-poster-track {
+  animation-duration: 90s;
+}
+.account-poster-column[data-reverse="true"] .account-poster-track {
+  animation-direction: reverse;
+}
+.account-poster-group {
+  display: grid;
+  gap: 16px;
+}
+.account-poster {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #1a1a1a;
+  box-shadow: 0 8px 24px #0005;
+}
+.account-poster img {
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.account-poster img[data-loaded="true"] {
+  opacity: 1;
+}
+.account-gallery[data-paused="true"] .account-poster-track {
+  animation-play-state: paused;
+}
+.account-gallery-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      #08080855,
+      transparent 25%,
+      #08080820 55%,
+      #080808ee
+    ),
+    linear-gradient(90deg, #08080820 75%, #08080890);
+}
+@keyframes account-poster-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-50% - 8px));
+  }
+}
+.account-gallery-caption {
+  position: absolute;
+  bottom: 56px;
+  left: clamp(28px, 4vw, 72px);
+  right: clamp(28px, 4vw, 72px);
+  color: white;
+}
+.account-gallery-mark {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 24px;
+}
+.account-gallery-tagline {
+  font-size: clamp(26px, 3vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  max-width: 420px;
+  text-wrap: balance;
+}
+.account-content {
+  width: 100%;
+  max-width: 380px;
+}
+.account-back {
+  display: inline-block;
+  margin-bottom: 40px;
+  color: #999;
+  font-size: 13px;
+}
+.account-back:hover {
+  color: white;
+}
+.account-heading {
+  margin-bottom: 32px;
+}
+.account-heading p {
+  color: #888;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.account-heading h1 {
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.account-form {
+  display: grid;
+  gap: 20px;
+}
+.account-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  color: #aaa;
+}
+.account-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ffffff25;
+  border-radius: 4px;
+  background: #ffffff05;
+  color: #eee;
+  outline: none;
+}
+.account-form input:focus {
+  border-color: #aaa;
+}
+.account-primary {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 4px;
+  background: #eee;
+  color: #111;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+.account-primary:hover {
+  background: white;
+}
+.account-secondary {
+  display: inline-block;
+  margin-top: 24px;
+  color: #aaa;
+  font-size: 13px;
+}
+.account-secondary:hover {
+  color: white;
+}
+.account-content button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.account-content :is(a, button):focus-visible {
+  outline: 2px solid #aaa;
+  outline-offset: 4px;
+}
+.account-error {
+  color: #ddd;
+  font-size: 13px;
+}
+.account-session {
+  display: grid;
+  gap: 16px;
+}
+.account-session h2 {
+  font-size: 18px;
+}
+.account-session p {
+  color: #999;
+  font-size: 14px;
+}
+.account-session .account-secondary {
+  margin: 0;
+  justify-self: start;
+}
+@media (max-width: 760px) {
+  .account-page {
+    grid-template-columns: 1fr;
+  }
+  .account-gallery {
+    position: relative;
+    height: 250px;
+    min-height: 0;
+  }
+  .account-gallery-caption {
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+  }
+  .account-gallery-mark {
+    display: none;
+  }
+  .account-gallery-tagline {
+    font-size: 26px;
+    max-width: 280px;
+  }
+  .account-form-panel {
+    min-width: 0;
+    width: 100%;
+    padding: 28px 24px 48px;
+  }
+  .account-back {
+    margin-bottom: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .account-poster-track {
+    animation: none;
+    will-change: auto;
+  }
+  .account-poster img {
+    transition: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .account-poster-wall {
+    width: calc(100% + 80px);
+    left: -40px;
+    top: -160px;
+    gap: 10px;
+    transform: rotateX(10deg) rotateY(-12deg) rotateZ(12deg);
+  }
+  .account-poster-track,
+  .account-poster-group {
+    gap: 10px;
+  }
+  .account-poster-track {
+    animation-name: account-poster-drift-mobile;
+  }
+  .account-poster {
+    border-radius: 4px;
+  }
+}
+@keyframes account-poster-drift-mobile {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-50% - 5px));
+  }
+}

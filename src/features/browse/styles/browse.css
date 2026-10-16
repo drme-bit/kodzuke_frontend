@@ -13,6 +13,4 @@
 .browse-hero { position: sticky; top: 80px; z-index: 20; isolation: isolate; background: transparent; backdrop-filter: none; }
 .browse-hero::before { content: ""; position: absolute; top: -240px; bottom: -42px; left: calc((100vw - 100%) / -2); right: calc((100vw - 100%) / -2); z-index: -1; pointer-events: none; background: linear-gradient(to bottom, #060606d9, #060606b0 70%, #06060670); backdrop-filter: blur(18px); -webkit-mask-image: linear-gradient(to bottom, black, black calc(100% - 60px), transparent); mask-image: linear-gradient(to bottom, black, black calc(100% - 60px), transparent); }
 @media (max-width: 640px) { .browse-hero { top: 70px; } }
-@media (max-width: 640px) { .browse-hero > div { min-height: 280px; padding-top: 18px; padding-bottom: 20px; } }
-@media (max-width: 640px) { .browse-hero h2 { font-size: 26px; } }
-@media (max-width: 640px) { .browse-hero p.line-clamp-3 { -webkit-line-clamp: 2; } }
+

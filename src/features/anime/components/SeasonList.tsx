@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { HiCheck, HiChevronRight } from "react-icons/hi2";
-import { translator, titleForLocale } from "@/i18n/ui";
-import { animeTypeLabel } from "@/features/anime/presentation";
-import type { Anime } from "@/lib/graphql";
+import { translator } from "@/i18n/ui";
+import { titleForLocale } from "@/i18n/content";
+import { animeTypeLabel } from "@/i18n/anime";
+import type { Anime } from "@/dto";
 import styles from "./SeasonList.module.css";
 
 export function SeasonList({ seasons, currentId, locale }: { seasons: Anime[]; currentId: string; locale: string }) {

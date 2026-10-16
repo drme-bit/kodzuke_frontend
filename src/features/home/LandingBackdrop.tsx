@@ -1,7 +1,7 @@
 "use client";
 import { useLocalization } from "@/i18n/client";
 import { useEffect, useState } from "react";
-import type { Anime } from "@/lib/graphql";
+import type { BackgroundTrailer } from "@/dto";
 function embed(url?: string) {
   if (!url) return null;
   try {
@@ -14,7 +14,7 @@ function TrailerLayer({ src, title, current }: { src: string; title: string; cur
   const { tui } = useLocalization();
   return <div className={`landing-trailer-layer ${current ? "is-current" : "is-previous"}`}><iframe src={src} title={tui("backgroundTrailer",{title})} tabIndex={-1} allow="autoplay; encrypted-media" /></div>;
 }
-export function LandingBackdrop({ animes }: { animes: Anime[] }) {
+export function LandingBackdrop({ animes }: { animes: BackgroundTrailer[] }) {
   const clips = animes.map(anime => ({ anime, src: embed(anime.trailerUrl) })).filter(clip => clip.src);
   const [cycle, setCycle] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);

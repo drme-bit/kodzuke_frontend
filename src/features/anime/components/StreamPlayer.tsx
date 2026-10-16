@@ -3,8 +3,8 @@ import { useLocalization } from "@/i18n/client";
 import { useEffect, useState, type Ref } from "react";
 import type { PlaybackState } from "@/features/anime/playbackEvents";
 import { Player, type PlayerHandle, type PlayerProgress } from "@/features/anime/components/Player";
-import { fetchEpisodeStream } from "@/lib/api";
-import type { Episode, StreamResponse } from "@/lib/graphql";
+import { fetchEpisodeStream } from "@/api/anime/client";
+import type { Episode, StreamResponse } from "@/dto";
 export function StreamPlayer({ episode, sourceId: selectedSourceId, poster, autoPlay = false, playRequest = 0, onEnded, onPlaybackState, onPlaybackIntent, playerRef, onProgress, className = "aspect-video" }: { episode: Episode | null; sourceId?: string; poster?: string; autoPlay?: boolean; playRequest?: number; onEnded?: () => void; onPlaybackState?: (state: PlaybackState) => void; className?: string; onPlaybackIntent?: () => void; playerRef?: Ref<PlayerHandle>; onProgress?: (progress: PlayerProgress) => void }) {
   const { tui } = useLocalization();
   const episodeId = episode?.id ?? null;

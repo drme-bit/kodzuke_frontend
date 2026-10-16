@@ -1,0 +1,125 @@
+.section {
+  color: #eee;
+}
+.heading {
+  margin: 0 0 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.sources {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 28px;
+}
+.community {
+  min-width: 160px;
+}
+.source {
+  display: block;
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+.community .source {
+  color: #ddd;
+}
+.communityValue {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+.score {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+.score svg {
+  align-self: center;
+  width: 18px;
+  height: 18px;
+}
+.score small,
+.external small {
+  font-size: 12px;
+  font-weight: 400;
+  color: #888;
+}
+.context {
+  color: #888;
+  font-size: 12px;
+}
+.external {
+  border-left: 1px solid #ffffff20;
+  padding-left: 28px;
+  text-decoration: none;
+  transition: color 150ms;
+}
+.external strong {
+  font-size: 21px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.external:hover .source,
+.external:hover strong {
+  color: #fff;
+}
+.external:focus-visible,
+.method summary:focus-visible {
+  outline: 1px solid #aaa;
+  outline-offset: 5px;
+  border-radius: 2px;
+}
+.method {
+  margin-top: 18px;
+  font-size: 12px;
+  color: #888;
+  max-width: 620px;
+}
+.method summary {
+  width: fit-content;
+  cursor: pointer;
+  list-style: none;
+}
+.method summary::-webkit-details-marker {
+  display: none;
+}
+.method summary::after {
+  content: "+";
+  margin-left: 8px;
+}
+.method[open] summary::after {
+  content: "−";
+}
+.method summary:hover {
+  color: #ddd;
+}
+.method > div {
+  padding-top: 10px;
+  line-height: 1.7;
+}
+.method p {
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .sources {
+    gap: 20px;
+  }
+  .external {
+    padding-left: 20px;
+  }
+  .community {
+    min-width: 140px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .external {
+    transition: none;
+  }
+}

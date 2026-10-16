@@ -1,5 +1,5 @@
 import { translator } from "@/i18n/ui";
-import type { Episode, EpisodeSource } from "@/lib/graphql";
+import type { Episode, EpisodeSource } from "@/dto";
 export function isEpisodeAvailable(episode: Episode) {
   if (episode.sources?.length) return true;
   if (episode.status) return episode.status === "AVAILABLE";
@@ -16,5 +16,5 @@ export function playerLabel(source: EpisodeSource) {
     if (host === "ru.yummyani.me") return "YummyAnime";
     if (host !== "localhost") return host.replace(/^www\./, "");
   } catch { /* A source can be resolved only after requesting the stream. */ }
-  return source.source === "YANIME" ? "YummyAnime" : source.source === "ANITUBE" ? "Anitube" : source.source || "Основной";
+  return source.source === "YANIME" ? "YummyAnime" : source.source === "ANITUBE" ? "Anitube" : source.source || translator("ru")("primary");
 }

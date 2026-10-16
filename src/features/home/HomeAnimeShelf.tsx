@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import type { Anime, LoloanRow } from "@/shared/api/models";
+import type { Anime, LoloanRow } from "@/dto";
 import { BrowseRows } from "@/features/browse/components/BrowseRows";
 
 /** Keep landing shelves identical to the browse experience. */

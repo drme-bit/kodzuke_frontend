@@ -6,7 +6,7 @@ import { useLocalization } from "@/i18n/client";
 import { useEffect, useRef, useState } from "react";
 import { HiPlay, HiLockClosed, HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { isEpisodeAvailable } from "@/features/anime/playerSources";
-import type { Episode } from "@/lib/graphql";
+import type { Episode } from "@/dto";
 
 function EpisodeThumbnail({ src, number }: { src?: string; number: number }) {
   const { tui } = useLocalization();

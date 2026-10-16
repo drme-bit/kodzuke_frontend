@@ -1,0 +1,11 @@
+import assert from "node:assert/strict";
+import fs from "node:fs/promises";
+import ts from "typescript";
+const source=await fs.readFile("src/i18n/content.ts","utf8");
+const compiled=ts.transpile(source,{module:ts.ModuleKind.ES2022,target:ts.ScriptTarget.ES2022});
+const {descriptionForLocale:select}=await import(`data:text/javascript;base64,${Buffer.from(compiled).toString("base64")}`);
+assert.equal(select({description:"Русское описание",descriptionEn:"English synopsis"},"en"),"English synopsis");
+assert.equal(select({description:"Русское описание"},"en"),undefined);
+assert.equal(select({description:"English legacy synopsis"},"en"),"English legacy synopsis");
+assert.equal(select({description:"Русское описание",descriptionEn:"English synopsis"},"ru"),"Русское описание");
+console.log("Anime description locale selection passed");

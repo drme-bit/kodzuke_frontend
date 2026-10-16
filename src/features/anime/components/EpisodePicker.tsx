@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { HiChevronRight } from "react-icons/hi2";
 import { useLocalization } from "@/i18n/client";
 import { isEpisodeAvailable } from "@/features/anime/playerSources";
-import type { Episode } from "@/shared/api/models";
+import type { Episode } from "@/dto";
 
 export function EpisodePicker({ episodes, current, onSelect }: { episodes: Episode[]; current: Episode | null; onSelect: (episode: Episode) => void }) {
   const { tui, locale } = useLocalization();

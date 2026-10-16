@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { headers } from "next/headers";
-import { normalizeLocale, translator } from "@/i18n/ui";
+import { normalizeLocale } from "@/i18n/config";
+import { translator } from "@/i18n/ui";
 import { Suspense } from "react";
 import { NavBar } from "@/features/navigation/components/NavBar";
 
@@ -20,7 +21,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const locale = normalizeLocale((await headers()).get("x-kodzuke-locale") ?? "ru");
   return (
     <html lang={locale}>
-      <body className={`${geistSans.variable} ${geistMono.variable} bg-black text-white antialiased`}>
+    <head>
+      <meta charSet="utf-8"/>
+      <title>KodZuke</title>
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+    </head>
+
+    <body className={`${geistSans.variable} ${geistMono.variable} bg-black text-white antialiased`}>
         <Suspense fallback={<div className="h-[76px] w-full" />}>
           <NavBar />
         </Suspense>

@@ -1,0 +1,183 @@
+.genre-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 0;
+  margin: 12px 0 0;
+  color: #999;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.genre-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  transition: color 0.15s;
+}
+.genre-links a + a::before {
+  content: "";
+  width: 1px;
+  height: 10px;
+  margin: 0 12px;
+  background: #ffffff25;
+}
+.genre-links a span {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.15s;
+}
+.genre-links a:hover,
+.genre-links a:focus-visible {
+  color: #eee;
+}
+.genre-links a:hover span,
+.genre-links a:focus-visible span {
+  text-decoration-color: #ffffff70;
+}
+.browse-hero-copy .genre-links + .browse-hero-description {
+  margin-top: 14px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .genre-links a,
+  .genre-links a span {
+    transition: none;
+  }
+}
+.genre-filter-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 0;
+  border-bottom: 1px solid #ffffff12;
+}
+.genre-filter {
+  position: relative;
+}
+.genre-filter summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  list-style: none;
+  padding: 8px 14px;
+  border: 1px solid #ffffff30;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.genre-filter summary::-webkit-details-marker {
+  display: none;
+}
+.genre-filter summary::after {
+  content: "⌄";
+  color: #aaa;
+}
+.genre-filter[open] summary {
+  border-color: #ffffff80;
+}
+.genre-filter summary > span {
+  color: #aaa;
+  font-size: 11px;
+}
+.genre-filter-menu {
+  z-index: 30;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: min(400px, calc(100vw - 40px));
+  padding: 14px;
+  background: #111f;
+  border: 1px solid #ffffff25;
+  border-radius: 4px;
+  box-shadow: 0 12px 30px #0008;
+}
+.genre-filter-menu > input {
+  width: 100%;
+  padding: 8px 0;
+  border-bottom: 1px solid #ffffff25;
+  background: transparent;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.genre-filter-menu > input:focus-visible {
+  outline: none;
+  border-bottom-color: #fff;
+}
+.genre-filter-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.genre-filter-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.genre-filter-options label:hover {
+  color: #fff;
+  background: #ffffff08;
+}
+.genre-filter-options input {
+  accent-color: #fff;
+}
+.genre-filter-options p {
+  color: #999;
+  grid-column: 1 / -1;
+  font-size: 12px;
+}
+.genre-filter-selected {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #ccc;
+}
+.genre-filter-selected:hover {
+  color: white;
+  background: #ffffff10;
+}
+.genre-filter-selected > span {
+  color: #999;
+}
+.genre-filter-row > small {
+  color: #777;
+  margin-left: 8px;
+  font-size: 11px;
+}
+.anime-card-genres {
+  position: absolute;
+  bottom: 12px;
+  left: 10px;
+  right: 10px;
+  color: #ddd;
+  font-size: 11px;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+  pointer-events: none;
+}
+.group:hover .anime-card-genres,
+.group:focus-within .anime-card-genres,
+a:focus-visible .anime-card-genres {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .anime-card-genres {
+    transition: none;
+  }
+}

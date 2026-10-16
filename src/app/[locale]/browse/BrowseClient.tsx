@@ -3,7 +3,7 @@ import { useLocalization } from "@/i18n/client";
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
-import type { Anime, LoloanRow } from "@/lib/graphql";
+import type { Anime, LoloanRow } from "@/dto";
 import { HiMagnifyingGlass, HiXMark } from "react-icons/hi2";
 import { BrowseBackdrop } from "@/features/browse/components/BrowseBackdrop";
 import { BrowseHero } from "@/features/browse/components/BrowseHero";

@@ -1,0 +1,95 @@
+.episode-rating-control {
+  pointer-events: auto;
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  margin: 14px 0 20px;
+  color: #ddd;
+  font-size: 13px;
+}
+.episode-rating-label {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.episode-rating-label small {
+  color: #999;
+}
+.episode-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.episode-rating-buttons {
+  display: flex;
+  gap: 4px;
+}
+.episode-rating-buttons button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ffffff30;
+  border-radius: 4px;
+  background: #1118;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    transform 0.15s;
+}
+.episode-rating-buttons button:hover:not(:disabled),
+.episode-rating-buttons button:focus-visible {
+  background: #ffffff30;
+  transform: translateY(-2px);
+  outline: 1px solid #fff;
+}
+.episode-rating-buttons button[aria-pressed="true"] {
+  background: #fff;
+  color: #111;
+  border-color: #fff;
+}
+.episode-rating-buttons button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.episode-rating-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #aaa;
+  font-size: 12px;
+}
+.episode-rating-actions a:hover,
+.episode-rating-actions button:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.episode-rating-actions [role="status"] {
+  color: #ddd;
+}
+@media (max-width: 640px) {
+  .episode-rating-control {
+    gap: 8px;
+    padding: 0;
+  }
+  .episode-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .episode-rating-buttons {
+    gap: 3px;
+  }
+  .episode-rating-buttons button {
+    width: 26px;
+    height: 28px;
+  }
+  .episode-rating-actions {
+    width: 100%;
+  }
+}
+
+.immersive-watch[data-controls="hidden"] .episode-rating-control,
+.immersive-watch[data-rail="closed"] .episode-rating-control {
+  pointer-events: none;
+}

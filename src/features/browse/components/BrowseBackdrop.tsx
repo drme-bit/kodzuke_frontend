@@ -1,6 +1,6 @@
 "use client";
 import { useLocalization } from "@/i18n/client";
-import type { Anime } from "@/lib/graphql";
+import type { Anime } from "@/dto";
 
 function trailerEmbed(url?: string | null) {
   if (!url) return null;

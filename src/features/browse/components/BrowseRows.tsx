@@ -1,11 +1,11 @@
 "use client";
 import { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import type { Anime, LoloanRow } from "@/lib/graphql";
+import type { Anime, LoloanRow } from "@/dto";
 import { AnimeCard } from "@/components/AnimeCard";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 
-import { fetchLoloan } from "@/shared/api/catalog";
+import { fetchLoloan } from "@/api/catalog/client";
 import { useLocalization } from "@/i18n/client";
 import { useHorizontalWheel } from "@/shared/hooks/useHorizontalWheel";
 type Row = LoloanRow;
@@ -21,7 +21,9 @@ function RowScroll({ row, locale, active, onHover }: { row: Row; locale: string;
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
   const items = [...row.animes, ...extra];
-  useHorizontalWheel(ref);
+
+  //useHorizontalWheel(ref);
+
   const load = useCallback(async () => {
     if (lock.current || !hasMore) return;
     lock.current = true;
@@ -39,6 +41,7 @@ function RowScroll({ row, locale, active, onHover }: { row: Row; locale: string;
     } catch { setFailed(true); }
     finally { lock.current = false; setLoading(false); }
   }, [hasMore,nextPage,row.id,row.animes]);
+
   useEffect(() => {
     const target = sentinel.current;
     if (!target || !hasMore || failed || loading) return;
@@ -48,6 +51,7 @@ function RowScroll({ row, locale, active, onHover }: { row: Row; locale: string;
     observer.observe(target);
     return () => observer.disconnect();
   }, [load,hasMore,failed,loading]);
+
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
 

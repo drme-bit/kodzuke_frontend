@@ -2,7 +2,7 @@
 import { useMinuteClock } from "@/shared/hooks/useMinuteClock";
 import { useLocalization } from "@/i18n/client";
 import { ReleaseCountdown } from "./ReleaseCountdown";
-import type { Episode } from "@/lib/graphql";
+import type { Episode } from "@/dto";
 
 export function AiringSchedule({ episodes, schedule }: { episodes: Episode[]; schedule?: { airDate?: string; number?: number } }) {
   const { tui, locale } = useLocalization();

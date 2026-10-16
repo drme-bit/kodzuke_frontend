@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { Anime } from "@/shared/api/models";
-import { homeContent } from "./content";
+import type { Anime } from "@/dto";
+import { homeContent } from "@/i18n/messages/home";
 import { HiArrowUpRight, HiPlay, HiPlus } from "react-icons/hi2";
 
 export function HomeExperience({ locale, anime }: { locale: string; anime?: Anime }) {

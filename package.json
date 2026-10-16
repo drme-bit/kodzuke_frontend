@@ -4,10 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run check:styles && next build",
+    "build": "npm run check:styles && npm run check:architecture && npm run check:i18n && next build",
     "start": "next start",
-    "lint": "npm run check:styles && eslint",
-    "check:styles": "node scripts/check-style-boundaries.mjs"
+    "lint": "npm run check:styles && npm run check:architecture && npm run check:i18n && eslint",
+    "check:styles": "node scripts/check-style-boundaries.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:auth": "node scripts/test-auth-navigation.mjs",
+    "check:architecture": "node scripts/check-architecture.mjs",
+    "check:i18n": "node scripts/check-i18n.mjs"
   },
   "dependencies": {
     "graphql-request": "^7.4.0",
@@ -24,6 +29,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.3",
+    "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

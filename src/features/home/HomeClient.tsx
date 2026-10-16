@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import type { Anime, LoloanRow } from "@/lib/graphql";
+import type { Anime, LoloanRow } from "@/dto";
 import { BrowseBackdrop } from "@/features/browse/components/BrowseBackdrop";
 import { BrowseHero } from "@/features/browse/components/BrowseHero";
 import { BrowseRows } from "@/features/browse/components/BrowseRows";

@@ -4,12 +4,65 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56c72e14-01f3-4e8d-a19d-2bac73bffca4" name="Changes" comment="feat: redesigned whole website styles">
+    <list default="true" id="56c72e14-01f3-4e8d-a19d-2bac73bffca4" name="Changes" comment="chore: player and icon fixes">
+      <change afterPath="$PROJECT_DIR$/scripts/test-player-selection.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/favicon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/anime/playbackSelection.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[locale]/anime/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/anime/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[locale]/browse/BrowseClient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/browse/BrowseClient.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[locale]/browse/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/browse/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[locale]/catalog/CatalogClient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/catalog/CatalogClient.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[locale]/catalog/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/catalog/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[locale]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[locale]/title/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/title/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[locale]/watch/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/watch/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AnimeCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AnimeCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/components/AiringSchedule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/anime/components/AiringSchedule.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/components/AnimeCommunity.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/anime/components/AnimeCommunity.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/components/AnimePlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/anime/components/AnimePlayer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/components/EpisodeList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/anime/components/EpisodeList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/components/EpisodePicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/anime/components/EpisodePicker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/components/Player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/anime/components/Player.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/components/SeasonList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/anime/components/SeasonList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/components/StreamPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/anime/components/StreamPlayer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/hooks/useEpisodeMetadata.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/anime/hooks/useEpisodeMetadata.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/playbackEvents.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/anime/playbackEvents.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/playerSources.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/anime/playerSources.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/presentation.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/anime/styles/player.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/anime/styles/player.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/browse/components/BrowseBackdrop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/browse/components/BrowseBackdrop.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/browse/components/BrowseHero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/browse/components/BrowseHero.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/browse/components/BrowseRows.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/browse/components/BrowseRows.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/browse/styles/browse.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/browse/styles/browse.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/browse/useCatalogPage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/browse/useCatalogPage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/home/HomeAnimeShelf.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/home/HomeAnimeShelf.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/home/HomeClient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/home/HomeClient.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/home/HomeStory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/home/HomeStory.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/home/LandingBackdrop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/home/LandingBackdrop.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/home/content.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/navigation/components/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/navigation/components/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/navigation/components/NavSearch.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/navigation/components/NavSearch.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/navigation/components/NavSearch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/navigation/components/NavSearch.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/navigation/styles/navigation.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/navigation/styles/navigation.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/client.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n/ui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/ui.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/api.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/graphql.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/proxy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/catalog.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/episodes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/graphqlClient.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/api/models.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +70,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="94" />
+    <option name="cachedIndexableFilesCount" value="123" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -46,61 +106,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000000311926" />
-      <entry key="S2" value="1.0023632697055065" />
-      <entry key="S5" value="1.089003194667916" />
-      <entry key="S10" value="1.2993189926912365" />
-      <entry key="S30" value="2.4005375316405297" />
-      <entry key="S60" value="5.719988041210851" />
-      <entry key="M2" value="10.945463382276413" />
-      <entry key="M5" value="16.946632859436363" />
-      <entry key="M10" value="19.728742701780103" />
-      <entry key="M15" value="20.852349782507748" />
-      <entry key="M30" value="22.910946974482354" />
-      <entry key="H1" value="26.38494020560129" />
-      <entry key="H2" value="32.344541736473886" />
-      <entry key="H4" value="40.3240472244001" />
-      <entry key="D1" value="69.17383192716616" />
-      <entry key="W1" value="86.95650999562666" />
+      <entry key="MS100" value="1.5360116450743084" />
+      <entry key="MS500" value="3.0889163386564" />
+      <entry key="S2" value="6.38159877152125" />
+      <entry key="S5" value="12.490354276981956" />
+      <entry key="S10" value="21.20592072210947" />
+      <entry key="S30" value="36.95401056163842" />
+      <entry key="S60" value="43.918168781045885" />
+      <entry key="M2" value="48.151160634090374" />
+      <entry key="M5" value="50.98010590760092" />
+      <entry key="M10" value="51.97607738411785" />
+      <entry key="M15" value="52.31423438816357" />
+      <entry key="M30" value="52.65553062677569" />
+      <entry key="H1" value="52.828999687571354" />
+      <entry key="H2" value="53.155876663336954" />
+      <entry key="H4" value="56.5265850909577" />
+      <entry key="D1" value="118.17270020340814" />
+      <entry key="W1" value="181.30565096505188" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
-      <entry key="S10" value="3.69478683902034E-184" />
-      <entry key="S30" value="7.76906342127462E-62" />
-      <entry key="S60" value="3.4496886999445657E-31" />
-      <entry key="M2" value="7.952457881382037E-16" />
-      <entry key="M5" value="1.3673921449715397E-6" />
-      <entry key="M10" value="0.0016505347930048995" />
-      <entry key="M15" value="0.017591721571955578" />
-      <entry key="M30" value="0.19010152981820966" />
-      <entry key="H1" value="0.6972359950129583" />
-      <entry key="H2" value="1.6135963706924594" />
-      <entry key="H4" value="3.038644093302691" />
-      <entry key="D1" value="13.153677894325256" />
-      <entry key="W1" value="20.355082994246814" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="1.0339237313522028E-250" />
+      <entry key="M2" value="2.53967575431951E-125" />
+      <entry key="M5" value="4.824952285552262E-50" />
+      <entry key="M10" value="6.181586032374991E-25" />
+      <entry key="M15" value="1.4649191741782326E-16" />
+      <entry key="M30" value="3.5427305048183626E-8" />
+      <entry key="H1" value="5.5963893162745E-4" />
+      <entry key="H2" value="0.07134738311821537" />
+      <entry key="H4" value="0.8591770291930135" />
+      <entry key="D1" value="13.2286275923436" />
+      <entry key="W1" value="28.6004414671858" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.333175770402872E-8" />
-      <entry key="MS500" value="0.03367916078716871" />
-      <entry key="S2" value="0.4298518033201857" />
-      <entry key="S5" value="0.7858443231478364" />
-      <entry key="S10" value="1.1160036011907386" />
-      <entry key="S30" value="2.324424103202666" />
-      <entry key="S60" value="5.678912237681081" />
-      <entry key="M2" value="10.923966563202756" />
-      <entry key="M5" value="16.937757768393297" />
-      <entry key="M10" value="19.725893190119546" />
-      <entry key="M15" value="20.866865445381265" />
-      <entry key="M30" value="23.099130446157872" />
-      <entry key="H1" value="27.08032532302889" />
-      <entry key="H2" value="33.95581571026788" />
-      <entry key="H4" value="43.360347758712244" />
-      <entry key="D1" value="82.32633316802365" />
-      <entry key="W1" value="107.31135781677584" />
+      <entry key="MS100" value="1.4984642408618933" />
+      <entry key="MS500" value="3.0720540638583707" />
+      <entry key="S2" value="6.372267064678241" />
+      <entry key="S5" value="12.481683914553761" />
+      <entry key="S10" value="21.189719330017322" />
+      <entry key="S30" value="36.92638096511341" />
+      <entry key="S60" value="43.89619354015428" />
+      <entry key="M2" value="48.13723592580653" />
+      <entry key="M5" value="50.97367716903491" />
+      <entry key="M10" value="51.97270498627107" />
+      <entry key="M15" value="52.31194982045292" />
+      <entry key="M30" value="52.65436992232829" />
+      <entry key="H1" value="52.82897315471485" />
+      <entry key="H2" value="53.22685307867361" />
+      <entry key="H4" value="57.385103968381166" />
+      <entry key="D1" value="131.39990925874324" />
+      <entry key="W1" value="209.9056912927365" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -121,15 +181,17 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "drme/server-client-logic-and-new-pages",
     "javascript.preferred.runtime.type.id": "node",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/nightkiller/Documents/CodeSpace/GitHub-Repos/kodzuke/kodzuke_frontend",
+    "last_opened_file_path": "/Users/nightkiller/Documents/CodeSpace/GitHub-Repos/kodzuke/kodzuke_frontend/src/app",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.Next.js: server-side.executor": "Run",
@@ -137,6 +199,11 @@
     "ts.external.directory.path": "/Users/nightkiller/Documents/CodeSpace/GitHub-Repos/kodzuke/kodzuke_frontend/node_modules/typescript/lib"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
@@ -170,6 +237,7 @@
       <workItem from="1788974651737" duration="13000" />
       <workItem from="1791934915047" duration="17448000" />
       <workItem from="1792022043106" duration="5917000" />
+      <workItem from="1792100918385" duration="12303000" />
     </task>
     <task id="LOCAL-00001" summary="feat: redesigned whole website styles">
       <option name="closed" value="true" />
@@ -179,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792025765850</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: navbar redesigned">
+      <option name="closed" value="true" />
+      <created>1792033905390</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1792033905390</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,6 +275,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit from Create Next App" />
     <MESSAGE value="feat: redesigned whole website styles" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: redesigned whole website styles" />
+    <MESSAGE value="feat: navbar redesigned" />
+    <MESSAGE value="chore: player and icon fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: player and icon fixes" />
   </component>
 </project>

@@ -481,3 +481,14 @@ body:has(.immersive-watch[data-controls="hidden"][data-in-view="true"]) .site-he
 .episode-upcoming-date { color: #999; font-size: 11px; margin-top: 4px; }
 
 .episode-upcoming-preview .release-countdown { margin: 0; padding: 12px; color: #eee; font-size: 16px; font-weight: 500; line-height: 1.5; text-align: center; font-variant-numeric: tabular-nums; }
+
+.theater-container:has(.player-loading) { position: static; padding: 0; background: transparent; }
+
+/* Ads keep their controls clear, including while the pointer is over the episode rail. */
+.immersive-watch[data-playback="advertising"] .episode-overlay,
+.immersive-watch[data-playback="advertising"] .episode-dwell-zone {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: none;
+}
